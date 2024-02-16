@@ -49,6 +49,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\alaskan_klee_kai.jpg" />
+	  <None Remove="Resources\Images\female.svg" />
+	  <None Remove="Resources\Images\ioana.png" />
+	  <None Remove="Resources\Images\jack.jpg" />
+	  <None Remove="Resources\Images\male.svg" />
+	  <None Remove="Resources\Images\pearl.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 	</ItemGroup>
 
