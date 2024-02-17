@@ -26,6 +26,7 @@ namespace PetAdoptionMobileApplication.WebAPI
 			// Configure the HTTP request pipeline.
 			if (app.Environment.IsDevelopment())
 			{
+				ApplyMigrations(app.Services); // Automatically run migration ONLY in development!
 				app.UseSwagger();
 				app.UseSwaggerUI();
 			}
@@ -38,6 +39,19 @@ namespace PetAdoptionMobileApplication.WebAPI
 			app.MapControllers();
 
 			app.Run();
+
+			static void ApplyMigrations(IServiceProvider serviceProvider)
+			{
+				using var scope = serviceProvider.CreateScope();
+
+				var dbContext = scope.ServiceProvider.GetRequiredService<PetAppDbContext>();
+
+				if (dbContext.Database.GetPendingMigrations().Any())
+				{
+					// run pending migrations automatically to the DB
+					dbContext.Database.Migrate();
+				}
+			}
 		}
 	}
 }
