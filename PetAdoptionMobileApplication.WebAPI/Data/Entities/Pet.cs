@@ -13,7 +13,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Data.Entities
 		[Required, MaxLength(255)]
 		public string Image {  get; set; }
 		[Required, MaxLength(100)]
-		public string? Breed { get; set; }
+		public string Breed { get; set; }
 		[Required]
 		public Gender Gender { get; set; }
 		[Required, Range(0, double.MaxValue)]

@@ -24,7 +24,7 @@ namespace PetAdoptionMobileApplication.Common.DTOs
 				{
 					case < 30:
 						return days + "days";
-					case >=30 and <= 30:
+					case >=30 and <= 31:
 						return "1 month";
 					case < 365:
 						return Math.Floor(difference.TotalDays / 30) + "months";

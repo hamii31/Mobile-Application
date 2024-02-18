@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PetAdoptionMobileApplication.Common.DTOs;
 using PetAdoptionMobileApplication.WebAPI.Data;
+using PetAdoptionMobileApplication.WebAPI.Data.Entities;
+using PetAdoptionMobileApplication.WebAPI.Services.Interfaces;
 
 namespace PetAdoptionMobileApplication.WebAPI.Services
 {
-	public class AuthService
+	public class AuthService : IAuthService
 	{
 		private readonly PetAppDbContext dbContext;
 		private readonly TokenService tokenService;
@@ -31,6 +33,31 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 			var token = this.tokenService.GenerateJWT(user);
 
 			return APIResponse<AuthenticationResponseDTO>.Success(new AuthenticationResponseDTO(user.Id, user.UserName, token));
+		}
+
+		public async Task<APIResponse<AuthenticationResponseDTO>> RegisterAsync(RegisterRequestDTO RRDTO)
+		{
+			var user = await this.dbContext.Users.FirstOrDefaultAsync(u => u.Email ==  RRDTO.Email);
+
+			if(user != null)
+			{
+				return APIResponse<AuthenticationResponseDTO>.Fail("A user with this email akready exists!");
+			}
+
+			var newUser = new User()
+			{
+				Email = RRDTO.Email,
+				UserName = RRDTO.Name,
+				Pass = RRDTO.Password
+			};
+
+			await this.dbContext.Users.AddAsync(newUser);
+
+			await this.dbContext.SaveChangesAsync();
+
+			var token = this.tokenService.GenerateJWT(newUser);
+
+			return APIResponse<AuthenticationResponseDTO>.Success(new AuthenticationResponseDTO(newUser.Id, newUser.UserName, token));
 		}
     }
 }
