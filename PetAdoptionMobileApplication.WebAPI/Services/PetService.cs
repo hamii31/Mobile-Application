@@ -37,7 +37,17 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 
 			return APIResponse<PetListDTO[]>.Success(pets);
 		}
+		public async Task<APIResponse<PetListDTO[]>> GetLeastPopularPetsAsync(int count)
+		{
+			var pets = await this.dbContext.Pets.OrderBy(p => p.View).Take(count).Select(Mappers.PetEntityToPetListDTO).ToArrayAsync();
 
+			if (!pets.Any())
+			{
+				return APIResponse<PetListDTO[]>.Fail("There was an error while processing this task!");
+			}
+
+			return APIResponse<PetListDTO[]>.Success(pets);
+		}
 		public async Task<APIResponse<PetListDTO[]>> GetRandomPetsAsync(int count)
 		{
 			var pets = await this.dbContext.Pets.OrderBy(p => Guid.NewGuid()).Take(count).Select(Mappers.PetEntityToPetListDTO).ToArrayAsync();
@@ -50,7 +60,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 			return APIResponse<PetListDTO[]>.Success(pets);
 		}
 
-		public async Task<APIResponse<PetListDTO[]>> GetAllPets()
+		public async Task<APIResponse<PetListDTO[]>> GetAllPetsAsync()
 		{
 			var pets = await this.dbContext.Pets.Select(Mappers.PetEntityToPetListDTO).ToArrayAsync();
 
@@ -82,6 +92,28 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 			return APIResponse<PetInfoDTO>.Success(petDTO);
 		}
 
-		// Add GetByAge and GetByLeastPopular
+		public async Task<APIResponse<PetListDTO[]>> GetYoungestPetsAsync(int count)
+		{
+			var pets = await this.dbContext.Pets.OrderByDescending(p => p.BirthDate).Take(count).Select(Mappers.PetEntityToPetListDTO).ToArrayAsync();
+
+			if (!pets.Any())
+			{
+				return APIResponse<PetListDTO[]>.Fail("There was an error while processing this task!");
+			}
+
+			return APIResponse<PetListDTO[]>.Success(pets);
+		}
+		public async Task<APIResponse<PetListDTO[]>> GetOldestPetsAsync(int count)
+		{
+			var pets = await this.dbContext.Pets.OrderBy(p => p.BirthDate).Take(count).Select(Mappers.PetEntityToPetListDTO).ToArrayAsync();
+
+			if (!pets.Any())
+			{
+				return APIResponse<PetListDTO[]>.Fail("There was an error while processing this task!");
+			}
+
+			return APIResponse<PetListDTO[]>.Success(pets);
+		}
+		
 	}
 }
