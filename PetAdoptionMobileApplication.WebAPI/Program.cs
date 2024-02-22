@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using PetAdoptionMobileApplication.WebAPI.Data;
+using PetAdoptionMobileApplication.WebAPI.Services;
 
 namespace PetAdoptionMobileApplication.WebAPI
 {
@@ -20,6 +21,11 @@ namespace PetAdoptionMobileApplication.WebAPI
 			var connectionString = builder.Configuration.GetConnectionString("Pet");
 			builder.Services.AddDbContext<PetAppDbContext>(options => 
 			options.UseSqlServer(connectionString), ServiceLifetime.Transient);
+
+			builder.Services.AddTransient<AuthService>()
+							.AddTransient<TokenService>()
+							.AddTransient<PetService>()
+							.AddTransient<UserPetService>();
 
 			var app = builder.Build();
 
