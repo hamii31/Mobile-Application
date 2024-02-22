@@ -13,6 +13,6 @@ namespace PetAdoptionMobileApplication.WebAPI.Services.Interfaces
 		Task<APIResponse<PetInfoDTO>> GetPetInformationAsync(Guid Id);
 		Task<APIResponse<PetListDTO[]>> GetYoungestPetsAsync(int count);
 		Task<APIResponse<PetListDTO[]>> GetOldestPetsAsync(int count);
-		Task<APIResponse<PetListDTO[]>> GetPetsByGender(Gender gender);
+		Task<APIResponse<PetListDTO[]>> GetPetsByGender(string gender);
 	}
 }

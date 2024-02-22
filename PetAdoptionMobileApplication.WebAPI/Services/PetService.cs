@@ -168,11 +168,11 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 				return APIResponse<PetListDTO[]>.Fail("An error occured while executing this task! " + e.Message);
 			}
 		}
-		public async Task<APIResponse<PetListDTO[]>> GetPetsByGender(Gender gender)
+		public async Task<APIResponse<PetListDTO[]>> GetPetsByGender(string gender)
 		{
 			try
 			{
-				var pets = await this.dbContext.Pets.Where(p => p.Gender == gender).Select(Mappers.PetEntityToPetListDTO).ToArrayAsync();
+				var pets = await this.dbContext.Pets.Where(p => p.Gender.ToString() == gender.ToLower()).Select(Mappers.PetEntityToPetListDTO).ToArrayAsync();
 
 				if (!pets.Any())
 				{
