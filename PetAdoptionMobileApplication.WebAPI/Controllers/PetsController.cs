@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using PetAdoptionMobileApplication.WebAPI.Services.Interfaces;
 
 namespace PetAdoptionMobileApplication.WebAPI.Controllers
 {
@@ -7,5 +7,13 @@ namespace PetAdoptionMobileApplication.WebAPI.Controllers
 	[ApiController]
 	public class PetsController : ControllerBase
 	{
-	}
+		private readonly IPetService petService;
+
+		public PetsController(IPetService petService)
+        {
+			this.petService = petService;
+		}
+
+
+    }
 }
