@@ -2,4 +2,4 @@ This is a complete Pet Adoption Mobile App - You can adopt pets (maybe list pets
 
 The data is fetched via API from a DB.
 
-The application is made in .NET MAUI with C# and XAM
+The application is made in .NET MAUI with C# and XAML
