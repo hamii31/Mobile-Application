@@ -4,10 +4,11 @@ using PetAdoptionMobileApplication.Common.Enums;
 using PetAdoptionMobileApplication.WebAPI.Data;
 using PetAdoptionMobileApplication.WebAPI.Data.Entities;
 using PetAdoptionMobileApplication.WebAPI.Extensions;
+using PetAdoptionMobileApplication.WebAPI.Services.Interfaces;
 
 namespace PetAdoptionMobileApplication.WebAPI.Services
 {
-	public class UserPetService
+	public class UserPetService : IUserPetService
 	{
 		private static readonly SemaphoreSlim semaphoreSlim = new (1, 1);
 		private readonly PetAppDbContext dbContext;

@@ -1,7 +1,9 @@
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using PetAdoptionMobileApplication.WebAPI.Data;
 using PetAdoptionMobileApplication.WebAPI.Services;
+using PetAdoptionMobileApplication.WebAPI.Services.Interfaces;
 
 namespace PetAdoptionMobileApplication.WebAPI
 {
@@ -12,20 +14,26 @@ namespace PetAdoptionMobileApplication.WebAPI
 			var builder = WebApplication.CreateBuilder(args);
 
 			// Add services to the container.
-
 			builder.Services.AddControllers();
-			// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
+
+			builder.Services.AddAuthentication(options =>
+			{
+				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+			})
+				.AddJwtBearer(JwtOptions => JwtOptions.TokenValidationParameters = TokenService.GetTokenValidationParameters(builder.Configuration));
+
 
 			var connectionString = builder.Configuration.GetConnectionString("Pet");
 			builder.Services.AddDbContext<PetAppDbContext>(options => 
 			options.UseSqlServer(connectionString), ServiceLifetime.Transient);
 
-			builder.Services.AddTransient<AuthService>()
+			builder.Services.AddTransient<IAuthService, AuthService>()
 							.AddTransient<TokenService>()
-							.AddTransient<PetService>()
-							.AddTransient<UserPetService>();
+							.AddTransient<IPetService, PetService>()
+							.AddTransient<IUserPetService, UserPetService>();
 
 			var app = builder.Build();
 
@@ -39,8 +47,8 @@ namespace PetAdoptionMobileApplication.WebAPI
 
 			app.UseHttpsRedirection();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
-
 
 			app.MapControllers();
 

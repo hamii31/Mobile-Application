@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PetAdoptionMobileApplication.Common.DTOs;
-using PetAdoptionMobileApplication.Common.Enums;
 using PetAdoptionMobileApplication.WebAPI.Data;
 using PetAdoptionMobileApplication.WebAPI.Extensions;
+using PetAdoptionMobileApplication.WebAPI.Services.Interfaces;
 
 namespace PetAdoptionMobileApplication.WebAPI.Services
 {
-	public class PetService
+	public class PetService : IPetService
 	{
 		private readonly PetAppDbContext dbContext;
 
@@ -19,7 +19,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 		{
 			try
 			{
-				var pets = await this.dbContext.Pets.Select(Mappers.PetEntityToPetListDTO).OrderByDescending(p => p.Price).Take(count).ToArrayAsync();
+				var pets = await this.dbContext.Pets.Select(Mappers.PetEntityToPetListDTO).OrderBy(p => p.Price).Take(count).ToArrayAsync();
 
 				if (!pets.Any())
 				{
