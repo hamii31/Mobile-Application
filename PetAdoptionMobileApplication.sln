@@ -9,11 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAdoptionMobileApplicatio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAdoptionMobileApplication.WebAPI", "PetAdoptionMobileApplication.WebAPI\PetAdoptionMobileApplication.WebAPI.csproj", "{FE46E79A-8493-45FC-95F1-0E595EBC2DEF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppImages", "AppImages", "{06752FC8-8ACD-4CCD-8C0C-82E06DF083C4}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\Pictures\Screenshots\loading_page_scr.png = ..\..\..\Pictures\Screenshots\loading_page_scr.png
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
