@@ -3,12 +3,59 @@
     x:Class="PetAdoptionMobileApplication.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:local="clr-namespace:PetAdoptionMobileApplication"
+    xmlns:pages="clr-namespace:PetAdoptionMobileApplication.Pages"
     Shell.FlyoutBehavior="Disabled">
 
+    <Shell.Behaviors>
+        <toolkit:StatusBarBehavior 
+            StatusBarColor="{StaticResource Primary}"
+            StatusBarStyle="LightContent"/>
+    </Shell.Behaviors>
+
     <ShellContent
-        Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+
+    <ShellContent
+        ContentTemplate="{DataTemplate pages:LoadingPage}"
+        Route="LoadingPage"
+        Shell.NavBarIsVisible="False"
+        Shell.TabBarIsVisible="False"/>
+
+    <ShellContent
+        ContentTemplate="{DataTemplate pages:LoginPage}"
+        Route="LoginPage"
+        Shell.NavBarIsVisible="False"
+        Shell.TabBarIsVisible="False"/>
+    
+    <TabBar>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate pages:HomePage}"
+            Icon="bx_home"
+            Route="HomePage"/>
+        <ShellContent
+            Title="Pets"
+            ContentTemplate="{DataTemplate pages:AllPetsPage}"
+            Icon="bx_all"
+            Route="AllPetsPage"/>
+        <ShellContent
+            Title="Favourites"
+            ContentTemplate="{DataTemplate pages:FavsPage}"
+            Icon="bx_heart"
+            Route="FavsPage"/>
+        <ShellContent
+            Title="Adopted"
+            ContentTemplate="{DataTemplate pages:AdoptionsPage}"
+            Icon="bx_adopted"
+            Route="AdoptionsPage"/>
+        <ShellContent
+            Title="Profile"
+            ContentTemplate="{DataTemplate pages:ProfilePage}"
+            Icon="bx_profile"
+            Route="ProfilePage"/>
+    </TabBar>
 
 </Shell>

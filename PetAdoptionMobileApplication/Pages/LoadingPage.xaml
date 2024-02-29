@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetAdoptionMobileApplication.Pages.LoadingPage">
+    <Grid 
+        RowDefinitions="*, *">
+
+        <Border 
+            Grid.Row="0"
+            StrokeShape="RoundRectangle 150"
+            StrokeThickness="5"
+            Stroke="{StaticResource Primary}"
+            WidthRequest="300"
+            HeightRequest="300"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+            
+            <Image 
+                Source="loading_img.jpg"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Aspect="AspectFill"
+                HeightRequest="350"
+                WidthRequest="300"/>
+
+            <Border.Shadow>
+                <Shadow
+                    Brush="{StaticResource Primary}"
+                    Radius="200"/>
+            </Border.Shadow>
+        </Border>
+
+        <Grid 
+            Grid.Row="1"
+            RowDefinitions="*, Auto"
+            Padding="15">
+            <VerticalStackLayout
+                Grid.Row="0"
+                Spacing="30">
+
+                <Label
+                    Text="Find your little happiness!"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="{StaticResource Tertiary}"
+                    LineHeight="1.2"
+                    HorizontalTextAlignment="Center"/>
+
+                <Label
+                    Text="You want a friend and they want a family! Find the best match right now!"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"/>
+
+            </VerticalStackLayout>
+            <Button
+                Grid.Row="1"
+                Text="Let's go!"
+                Padding="0,15"
+                CornerRadius="15"
+                FontSize="20"
+                FontAttributes="Bold"
+                Clicked="Button_Clicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>

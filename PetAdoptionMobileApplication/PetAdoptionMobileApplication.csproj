@@ -50,9 +50,15 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\alaskan_klee_kai.jpg" />
+	  <None Remove="Resources\Images\bx_adopted.svg" />
+	  <None Remove="Resources\Images\bx_all.svg" />
+	  <None Remove="Resources\Images\bx_heart.svg" />
+	  <None Remove="Resources\Images\bx_home.svg" />
+	  <None Remove="Resources\Images\bx_profile.svg" />
 	  <None Remove="Resources\Images\female.svg" />
 	  <None Remove="Resources\Images\ioana.png" />
 	  <None Remove="Resources\Images\jack.jpg" />
+	  <None Remove="Resources\Images\loading_img.jpg" />
 	  <None Remove="Resources\Images\male.svg" />
 	  <None Remove="Resources\Images\pearl.jpg" />
 	</ItemGroup>
@@ -68,7 +74,39 @@
 	  <Folder Include="Models\" />
 	  <Folder Include="Services\" />
 	  <Folder Include="ViewModels\" />
-	  <Folder Include="Pages\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Pages\FavPetsPage.xaml.cs">
+	    <DependentUpon>FavPetsPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Pages\AdoptionsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\AllPetsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\FavPetsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\LoadingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\PetDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ProfilePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
