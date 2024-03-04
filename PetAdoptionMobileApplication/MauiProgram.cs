@@ -21,7 +21,16 @@ namespace PetAdoptionMobileApplication
 		builder.Logging.AddDebug();
 #endif
 
+			AddToDependencyContainer(builder.Services);
+
 			return builder.Build();
+		}
+
+		static void AddToDependencyContainer(IServiceCollection services)
+		{
+			// Add all services, pages, models, viewmodels here:
+			services.AddTransient<LoginViewModel>()
+					.AddTransient<LoginPage>();
 		}
 	}
 }

@@ -1,5 +1,4 @@
-﻿using PetAdoptionMobileApplication.Pages;
-using static PetAdoptionMobileApplication.UIConstants;
+﻿using static PetAdoptionMobileApplication.UIConstants;
 
 namespace PetAdoptionMobileApplication
 {
@@ -20,7 +19,7 @@ namespace PetAdoptionMobileApplication
 			}
 			else // user loads for the first time
 			{
-				await Shell.Current.GoToAsync($"//{nameof(LoadingPage)}");
+				await Shell.Current.GoToAsync($"//{nameof(BoardingPage)}");
 			}
 		}
 	}

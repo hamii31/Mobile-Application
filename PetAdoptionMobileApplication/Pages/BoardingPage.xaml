@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PetAdoptionMobileApplication.Pages.LoadingPage">
+             x:Class="PetAdoptionMobileApplication.Pages.BoardingPage">
     <Grid 
         RowDefinitions="*, *">
 
@@ -16,11 +16,11 @@
             HorizontalOptions="Center">
             
             <Image 
-                Source="loading_img.jpg"
+                Source="img_test.jpg"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 Aspect="AspectFill"
-                HeightRequest="350"
+                HeightRequest="290"
                 WidthRequest="300"/>
 
             <Border.Shadow>
@@ -55,11 +55,8 @@
             <Button
                 Grid.Row="1"
                 Text="Let's go!"
-                Padding="0,15"
-                CornerRadius="15"
-                FontSize="20"
-                FontAttributes="Bold"
-                Clicked="Button_Clicked"/>
+                Clicked="Button_Clicked"
+                Style="{StaticResource btnPrimary}"/>
         </Grid>
     </Grid>
 </ContentPage>

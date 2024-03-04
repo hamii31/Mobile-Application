@@ -52,10 +52,12 @@
 	  <None Remove="Resources\Images\alaskan_klee_kai.jpg" />
 	  <None Remove="Resources\Images\bx_adopted.svg" />
 	  <None Remove="Resources\Images\bx_all.svg" />
+	  <None Remove="Resources\Images\bx_dog.svg" />
 	  <None Remove="Resources\Images\bx_heart.svg" />
 	  <None Remove="Resources\Images\bx_home.svg" />
 	  <None Remove="Resources\Images\bx_profile.svg" />
 	  <None Remove="Resources\Images\female.svg" />
+	  <None Remove="Resources\Images\img_test.jpg" />
 	  <None Remove="Resources\Images\ioana.png" />
 	  <None Remove="Resources\Images\jack.jpg" />
 	  <None Remove="Resources\Images\loading_img.jpg" />
@@ -71,14 +73,15 @@
 
 	<ItemGroup>
 	  <Folder Include="Controls\" />
-	  <Folder Include="Models\" />
 	  <Folder Include="Services\" />
-	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="Pages\FavPetsPage.xaml.cs">
 	    <DependentUpon>FavPetsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\BoardingPage.xaml.cs">
+	    <DependentUpon>BoardingPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -95,7 +98,7 @@
 	  <MauiXaml Update="Pages\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\LoadingPage.xaml">
+	  <MauiXaml Update="Pages\BoardingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\LoginPage.xaml">

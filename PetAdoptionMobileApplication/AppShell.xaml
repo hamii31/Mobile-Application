@@ -19,8 +19,8 @@
         Route="MainPage" />
 
     <ShellContent
-        ContentTemplate="{DataTemplate pages:LoadingPage}"
-        Route="LoadingPage"
+        ContentTemplate="{DataTemplate pages:BoardingPage}"
+        Route="BoardingPage"
         Shell.NavBarIsVisible="False"
         Shell.TabBarIsVisible="False"/>
 
@@ -39,7 +39,7 @@
         <ShellContent
             Title="Pets"
             ContentTemplate="{DataTemplate pages:AllPetsPage}"
-            Icon="bx_all"
+            Icon="bx_dog"
             Route="AllPetsPage"/>
         <ShellContent
             Title="Favourites"
