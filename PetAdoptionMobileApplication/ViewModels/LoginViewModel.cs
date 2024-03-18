@@ -1,10 +1,19 @@
-﻿namespace PetAdoptionMobileApplication.ViewModels
+﻿using PetAdoptionMobileApplication.Services;
+
+namespace PetAdoptionMobileApplication.ViewModels
 {
 	[QueryProperty(nameof(FirstTimeUser), nameof(FirstTimeUser))]
 	public partial class LoginViewModel : BaseViewModel
 	{
-		
-		[ObservableProperty]
+        private readonly CommonService cService;
+        private readonly IAuthAPI authAPI;
+        public LoginViewModel(CommonService cService, IAuthAPI authAPI)
+        {
+            this.cService = cService;
+            this.authAPI = authAPI;
+        }
+
+        [ObservableProperty]
 		private bool _isRegistering;
 
 		[ObservableProperty]
@@ -13,7 +22,7 @@
 		[ObservableProperty]
 		private bool _firstTimeUser;
 
-		partial void OnFirstTimeUserChanging(bool value)
+        partial void OnFirstTimeUserChanging(bool value)
 		{
 			bool firstTimeUser = value;
 
@@ -43,6 +52,9 @@
 
 			// Make API call to login/register user, but for now just Skip when Logging in
 			await Task.Delay(1000);
+
+			cService.SetToken("MOCK_TOKEN");
+
 			await SkipForNow();
 
 			IsBusy = false;

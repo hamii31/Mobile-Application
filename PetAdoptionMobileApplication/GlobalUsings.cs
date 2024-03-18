@@ -4,3 +4,4 @@ global using CommunityToolkit.Mvvm.Input;
 global using PetAdoptionMobileApplication.Models;
 global using PetAdoptionMobileApplication.Pages;
 global using PetAdoptionMobileApplication.ViewModels;
+global using PetAdoptionMobileApplication.Services.Interfaces;

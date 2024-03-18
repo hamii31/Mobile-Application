@@ -52,7 +52,7 @@ namespace PetAdoptionMobileApplication.WebAPI
 
 			app.MapControllers();
 
-			app.Run();
+			app.Run("https://localhost:1234");
 
 			static void ApplyMigrations(IServiceProvider serviceProvider)
 			{
