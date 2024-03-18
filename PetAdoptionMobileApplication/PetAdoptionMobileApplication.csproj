@@ -50,12 +50,15 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\alaskan_klee_kai.jpg" />
+	  <None Remove="Resources\Images\bunny_img.jpg" />
 	  <None Remove="Resources\Images\bx_adopted.svg" />
 	  <None Remove="Resources\Images\bx_all.svg" />
 	  <None Remove="Resources\Images\bx_dog.svg" />
 	  <None Remove="Resources\Images\bx_heart.svg" />
 	  <None Remove="Resources\Images\bx_home.svg" />
 	  <None Remove="Resources\Images\bx_profile.svg" />
+	  <None Remove="Resources\Images\cat_img.jpg" />
+	  <None Remove="Resources\Images\dog_img.jpg" />
 	  <None Remove="Resources\Images\female.svg" />
 	  <None Remove="Resources\Images\img_test.jpg" />
 	  <None Remove="Resources\Images\ioana.png" />

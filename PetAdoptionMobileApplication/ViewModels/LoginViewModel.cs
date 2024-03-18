@@ -1,11 +1,9 @@
 ﻿namespace PetAdoptionMobileApplication.ViewModels
 {
 	[QueryProperty(nameof(FirstTimeUser), nameof(FirstTimeUser))]
-	public partial class LoginViewModel : ObservableObject
+	public partial class LoginViewModel : BaseViewModel
 	{
-		[ObservableProperty]
-		private bool _isBusy;
-
+		
 		[ObservableProperty]
 		private bool _isRegistering;
 
@@ -30,14 +28,14 @@
 		private void SwitchModes() => IsRegistering = !IsRegistering; // (if registering, switch to logging in, if logging in, switch to registering)
 
 		[RelayCommand]
-		private async Task SkipForNow() => await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
+		private async Task SkipForNow() => await GoToAsync($"//{nameof(HomePage)}");
 
 		[RelayCommand]
 		private async Task Login()
 		{
 			if(!Model.IsValidState(IsRegistering))
 			{
-				await Toast.Make("All fields are required!").Show();
+				await ShowToastAsync("All fields are required!");
 				return;
 			}
 

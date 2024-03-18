@@ -5,30 +5,93 @@
     <Grid 
         RowDefinitions="*, *">
 
-        <Border 
+        <Grid
             Grid.Row="0"
-            StrokeShape="RoundRectangle 150"
-            StrokeThickness="5"
-            Stroke="{StaticResource Primary}"
-            WidthRequest="300"
-            HeightRequest="300"
-            VerticalOptions="Center"
-            HorizontalOptions="Center">
+            RowDefinitions="*, *"
+            RowSpacing="-100">
             
-            <Image 
-                Source="img_test.jpg"
-                HorizontalOptions="Center"
+            <!--first image-->
+            <Border 
+                Grid.Row="0"
+                StrokeShape="RoundRectangle 150"
+                StrokeThickness="5"
+                Stroke="{StaticResource Primary}"
+                WidthRequest="200"
+                HeightRequest="200"
                 VerticalOptions="Center"
-                Aspect="AspectFill"
-                HeightRequest="290"
-                WidthRequest="300"/>
+                HorizontalOptions="Center">
 
-            <Border.Shadow>
-                <Shadow
-                    Brush="{StaticResource Primary}"
-                    Radius="200"/>
-            </Border.Shadow>
-        </Border>
+                <Image 
+                    Source="dog_img.jpg"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Aspect="AspectFill"
+                    HeightRequest="200"
+                    WidthRequest="200"/>
+
+                <Border.Shadow>
+                    <Shadow
+                        Brush="{StaticResource Primary}"
+                        Radius="200"/>
+                </Border.Shadow>
+            </Border>
+            
+            <!--two images-->
+            <Grid
+                Grid.Row="1"
+                ColumnDefinitions="*, *"
+                ColumnSpacing="-50">
+                
+                <Border 
+                    Grid.Column="0"
+                    StrokeShape="RoundRectangle 150"
+                    StrokeThickness="5"
+                    Stroke="{StaticResource Primary}"
+                    WidthRequest="200"
+                    HeightRequest="200"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+
+                    <Image 
+                        Source="cat_img.jpg"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="200"
+                        WidthRequest="200"/>
+
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="{StaticResource Primary}"
+                            Radius="200"/>
+                    </Border.Shadow>
+                </Border>
+                <Border 
+                    Grid.Column="1"
+                    StrokeShape="RoundRectangle 150"
+                    StrokeThickness="5"
+                    Stroke="{StaticResource Primary}"
+                    WidthRequest="200"
+                    HeightRequest="200"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+
+                    <Image 
+                        Source="bunny_img.jpg"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Aspect="AspectFill"
+                        HeightRequest="200"
+                        WidthRequest="200"/>
+
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="{StaticResource Primary}"
+                            Radius="200"/>
+                    </Border.Shadow>
+                </Border>
+            </Grid>
+        </Grid>
 
         <Grid 
             Grid.Row="1"
