@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-using PetAdoptionMobileApplication.Common.Constants;
+
 using PetAdoptionMobileApplication.Services;
 using Refit;
 
 namespace PetAdoptionMobileApplication
 {
-	public static class MauiProgram
+    public static class MauiProgram
 	{
 		public static MauiApp CreateMauiApp()
 		{
@@ -21,10 +21,16 @@ namespace PetAdoptionMobileApplication
 				});
 
 #if DEBUG
-		builder.Logging.AddDebug();
+			builder.Logging.AddDebug();
 #endif
 
-			AddToDependencyContainer(builder.Services);
+#if ANDROID && DEBUG
+            Platforms.Android.DangerousAndroidMessageHandlerEmitter.Register();
+            Platforms.Android.DangerousTrustProvider.Register();
+#endif
+
+
+            AddToDependencyContainer(builder.Services);
 			ConfigureRefit(builder.Services);
 
 			return builder.Build();
@@ -35,6 +41,8 @@ namespace PetAdoptionMobileApplication
 			// Add all services, pages, models, viewmodels here:
 			services.AddTransient<LoginViewModel>()
 					.AddTransient<LoginPage>();
+
+			services.AddTransient<AuthService>();
 
 			services.AddSingleton<CommonService>();
 		}
@@ -62,8 +70,16 @@ namespace PetAdoptionMobileApplication
 
 			static void SetHttpClient(HttpClient httpClient)
 			{
-				httpClient.BaseAddress = new Uri(AppConstants.BaseAPIUrl);
-            }
+                //httpClient.BaseAddress = new Uri(AppConstants.BaseAPIUrl);
+                var baseUrl = DeviceInfo.Platform == DevicePlatform.Android
+							 ? "https://10.0.2.2:1234"
+							 : "https://localhost:1234";
+
+				httpClient.BaseAddress = new Uri(baseUrl);
+			}
+
+
         }
+
 	}
 }
