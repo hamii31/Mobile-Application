@@ -5,3 +5,5 @@ global using PetAdoptionMobileApplication.Models;
 global using PetAdoptionMobileApplication.Pages;
 global using PetAdoptionMobileApplication.ViewModels;
 global using PetAdoptionMobileApplication.Services.Interfaces;
+global using PetAdoptionMobileApplication.Common.DTOs;
+global using PetAdoptionMobileApplication.Common.Enums;

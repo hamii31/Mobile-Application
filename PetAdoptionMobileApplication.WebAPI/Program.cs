@@ -17,8 +17,13 @@ namespace PetAdoptionMobileApplication.WebAPI
 			builder.Services.AddControllers();
 			builder.Services.AddEndpointsApiExplorer();
 			builder.Services.AddSwaggerGen();
+				//(c =>
+    //        {
+    //            c.SwaggerDoc("v1", new Info { Title = "API WSVAP (WebSmartView)", Version = "v1" });
+    //            c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First()); //This line
+    //        });
 
-			builder.Services.AddAuthentication(options =>
+            builder.Services.AddAuthentication(options =>
 			{
 				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
 				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -43,11 +48,14 @@ namespace PetAdoptionMobileApplication.WebAPI
 				ApplyMigrations(app.Services); // Automatically run migration ONLY in development!
 				app.UseSwagger();
 				app.UseSwaggerUI();
+				app.UseDeveloperExceptionPage();
 			}
 			app.UseSwaggerUI(c =>
 			{
 				c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
 			});
+
+			app.UseStaticFiles(); // allows for content to be served from wwwroot
 
 			app.UseHttpsRedirection();
 

@@ -15,9 +15,9 @@ namespace PetAdoptionMobileApplication
 
 			if (Preferences.Default.ContainsKey(LoadingShown))
 			{
-				await Shell.Current.GoToAsync($"//{nameof(LoginPage)}"); // This should be HomePage but for testing's sake it's not
+				await Shell.Current.GoToAsync($"//{nameof(HomePage)}");
 			}
-			else // user loads for the first time
+			else // first time user is redirected to BoardingPage
 			{
 				await Shell.Current.GoToAsync($"//{nameof(BoardingPage)}");
 			}

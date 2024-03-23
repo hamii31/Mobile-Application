@@ -2,6 +2,6 @@
 {
     public static class AppConstants
     {
-        public const string BaseAPIUrl = "https://4fgx25r1-7021.euw.devtunnels.ms";
+        public const string BaseAPIUrl = "https://localhost:1234";
     }
 }

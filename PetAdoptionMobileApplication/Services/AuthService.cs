@@ -1,4 +1,5 @@
 ﻿using PetAdoptionMobileApplication.Common.DTOs;
+using Refit;
 
 namespace PetAdoptionMobileApplication.Services
 {
@@ -27,31 +28,46 @@ namespace PetAdoptionMobileApplication.Services
 
         public async Task<bool> LoginOrRegisterAsync(LoginModel model)
         {
-            APIResponse<AuthenticationResponseDTO> APIResponse;
+            APIResponse<AuthenticationResponseDTO> APIResponse = null; // value will be assigned immediately after this call
 
-            if (model.NewUser) // check if the user is new
+            try
             {
-                APIResponse = await this.authAPI.RegisterAsync(new RegisterRequestDTO
+                if (model.NewUser) // check if the user is new
                 {
-                    Email = model.Email,
-                    Password = model.Password,
-                    Name = model.UserName
-                });
+                    APIResponse = await this.authAPI.RegisterAsync(new RegisterRequestDTO
+                    {
+                        Email = model.Email,
+                        Password = model.Password,
+                        Name = model.UserName
+                    });
+                }
+                else // if user is not new, do this:
+                {
+                    APIResponse = await this.authAPI.LoginAsync(new LoginRequestDTO
+                    {
+                        Email = model.Email,
+                        Password = model.Password
+                    });
+                }
             }
-            else // if user is not new, do this:
+            catch (ApiException ex)
             {
-                APIResponse = await this.authAPI.LoginAsync(new LoginRequestDTO
+                var errorMessage = ex.Content;
+
+                if (errorMessage.Contains("Email")) // check if the error is related to the email format
                 {
-                    Email = model.Email,
-                    Password = model.Password
-                });
+                    errorMessage = "Email was not in the correct format!";
+                }
+
+                await App.Current.MainPage.DisplayAlert("Error", errorMessage, "Ok");
+                return false;
             }
             
 
             if (!APIResponse.IsSuccess)
             {
                 await App.Current.MainPage.DisplayAlert("Error", APIResponse.Message, "Ok");
-                return APIResponse.IsSuccess; // return false
+                return APIResponse.IsSuccess; // returns false
             }
 
             SetUserAndToken(APIResponse);

@@ -73,7 +73,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 		{
 			try
 			{
-				var pets = await this.dbContext.Pets.OrderBy(p => Guid.NewGuid()).Take(count).Select(Mappers.PetEntityToPetListDTO).ToArrayAsync();
+				var pets = await this.dbContext.Pets.OrderBy(p => Guid.NewGuid()).Where(p => p.PetName != "Ioana").Take(count).Select(Mappers.PetEntityToPetListDTO).ToArrayAsync();
 
 				if (!pets.Any())
 				{

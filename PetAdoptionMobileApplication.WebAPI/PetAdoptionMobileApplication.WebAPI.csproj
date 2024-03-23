@@ -21,4 +21,11 @@
     <ProjectReference Include="..\PetAdoptionMobileApplication.Common\PetAdoptionMobileApplication.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Images\Pets\alaskan_klee_kai.jpg" />
+    <None Include="wwwroot\Images\Pets\ioana.png" />
+    <None Include="wwwroot\Images\Pets\jack.jpg" />
+    <None Include="wwwroot\Images\Pets\pearl.jpg" />
+  </ItemGroup>
+
 </Project>

@@ -6,7 +6,7 @@ namespace PetAdoptionMobileApplication.Services.Interfaces
     [Headers("Authorization: Bearer")]
     public interface IUserAPI
     {
-        [Post("/api/user/favourites/{petId:Guid}")] // api/user/favourites/petId
+        [Post("/api/user/favourites/{petId}")] // api/user/favourites/petId
         Task<APIResponse> AddOrRemoveFromFavPetsAsync(Guid petId);
 
         [Get("/api/user/favourites")] // api/user/favourites
@@ -15,7 +15,7 @@ namespace PetAdoptionMobileApplication.Services.Interfaces
         [Get("/api/user/adoptions")] // api/user/adoptions
         Task<APIResponse<PetListDTO[]>> GetUserAdoptionsAsync();
 
-        [Post("/api/user/adopt/{petId:Guid}")] // api/user/adopt/petId
+        [Post("/api/user/adopt/{petId}")] // api/user/adopt/petId
         Task<APIResponse> AdoptPetAsync(Guid petId);
     }
 }

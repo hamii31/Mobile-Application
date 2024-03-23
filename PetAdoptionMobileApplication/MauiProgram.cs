@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-
 using PetAdoptionMobileApplication.Services;
 using Refit;
 
@@ -18,7 +17,8 @@ namespace PetAdoptionMobileApplication
 				{
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-				});
+                    fonts.AddFont("Lobster-Regular.ttf", "Lobster");
+                });
 
 #if DEBUG
 			builder.Logging.AddDebug();
@@ -45,6 +45,9 @@ namespace PetAdoptionMobileApplication
 			services.AddTransient<AuthService>();
 
 			services.AddSingleton<CommonService>();
+
+			services.AddSingleton<HomeViewModel>()
+					.AddSingleton<HomePage>();
 		}
 
 		static void ConfigureRefit(IServiceCollection services)
@@ -76,6 +79,8 @@ namespace PetAdoptionMobileApplication
 							 : "https://localhost:1234";
 
 				httpClient.BaseAddress = new Uri(baseUrl);
+
+
 			}
 
 

@@ -1,12 +1,179 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PetAdoptionMobileApplication.ViewModels"
+             xmlns:models="clr-namespace:PetAdoptionMobileApplication.Models"
+             xmlns:dtos="clr-namespace:PetAdoptionMobileApplication.Common.DTOs;assembly=PetAdoptionMobileApplication.Common"
              x:Class="PetAdoptionMobileApplication.Pages.HomePage"
-             Title="HomePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Shell.NavBarIsVisible="False"
+             x:DataType="vm:HomeViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate
+                x:Key="PetsHorizontalListTemp"
+                x:DataType="dtos:PetListDTO">
+                <VerticalStackLayout>
+                    <Border
+                         HeightRequest="100"
+                         WidthRequest="100"
+                         StrokeShape="RoundRectangle 50"
+                         StrokeThickness="0">
+
+                        <Image
+                             Source="{Binding Image}"
+                             HeightRequest="100"
+                             WidthRequest="100"
+                             Aspect="AspectFill"/>
+                    </Border>
+                    <Label
+                         Text="{Binding Name}"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         FontSize="16"
+                         FontAttributes="Bold"/>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid 
+        RowDefinitions="80, *">
+        
+        <!--Header-->
+        <VerticalStackLayout 
+            Grid.Row="0"
+            Padding="15"
+            Spacing="15">
+            
+            <Label 
+                Text="{Binding UserName, StringFormat='Hi, {0}'}" 
+                FontSize="15"
+                FontAttributes="Italic"
+                HorizontalOptions="End"/>
+            <Label
+                Text="Let's see who is waiting for you!"
+                FontSize="22"
+                FontAttributes="Italic, Bold"
+                HorizontalOptions="Center"/>
+
+        </VerticalStackLayout>
+        <!--Header-->
+
+        <!--Content View-->
+        <ScrollView 
+            Grid.Row="1"
+            Padding="20">
+            
+            <VerticalStackLayout>
+
+                <CarouselView
+                    ItemsSource="{Binding MostAffordable}">
+
+                    <CarouselView.ItemTemplate
+                        Padding="20">
+
+                        <DataTemplate
+                            x:DataType="dtos:PetListDTO">
+
+                            <Grid
+                                RowDefinitions="*, Auto, Auto">
+
+                                <Border 
+                                    Grid.Row="0"
+                                    HeightRequest="200"
+                                    WidthRequest="200"
+                                    StrokeShape="RoundRectangle 125"
+                                    StrokeThickness="0">
+
+                                    <Image 
+                                        Source="{Binding Image}"
+                                        HeightRequest="200"
+                                        WidthRequest="200"
+                                        Aspect="AspectFill"/>
+
+                                </Border>
+
+                                <Label
+                                    Grid.Row="1"
+                                    Text="{Binding Name}"
+                                    HorizontalOptions="Center"
+                                    FontAttributes="Bold"
+                                    FontSize="20"/>
+                                <Label
+                                    Grid.Row="2"
+                                    Text="{Binding Price, StringFormat='{0:C}'}"
+                                    HorizontalOptions="Center"
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    TextColor="{StaticResource Primary}"
+                                    />
+
+                            </Grid>
+
+                        </DataTemplate>
+
+                    </CarouselView.ItemTemplate>
+
+                </CarouselView>
+                <VerticalStackLayout
+                    Spacing="15"
+                    Padding="5">
+                    <Label
+                        Text="Most Popular Pets:"
+                        FontSize="25"
+                        FontAttributes="Italic,Bold"/>
+                    <CollectionView
+                        ItemsSource="{Binding Popular}"
+                        ItemTemplate="{StaticResource PetsHorizontalListTemp}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout
+                                Orientation="Horizontal"
+                                ItemSpacing="10"/>
+                        </CollectionView.ItemsLayout>
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+                <VerticalStackLayout
+                     Spacing="15"
+                     Padding="5">
+                    <Label
+                         Text="The Stars chose for you:"
+                         FontSize="25"
+                         FontAttributes="Italic,Bold"/>
+                    <CollectionView
+                         ItemsSource="{Binding Random}"
+                         ItemTemplate="{StaticResource PetsHorizontalListTemp}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout
+                                 Orientation="Horizontal"
+                                 ItemSpacing="10"/>
+                        </CollectionView.ItemsLayout>
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+        <!--Content View-->
+
+
+        <!--Loading Screen-->
+        <Grid 
+            Grid.RowSpan="2"
+            IsVisible="{Binding IsBusy}">
+            <BoxView 
+                Color="{StaticResource Primary}"
+                Opacity="1"/>
+
+            <ActivityIndicator
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                IsRunning="True"
+                Color="White"/>
+        </Grid>
+        <!--Loading Screen-->
+    </Grid>
 </ContentPage>
