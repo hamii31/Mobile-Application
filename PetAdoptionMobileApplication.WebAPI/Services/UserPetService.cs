@@ -17,6 +17,27 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
         {
 			this.dbContext = dbContext;
 		}
+
+		//public async Task<APIResponse> GetUserNameAsync(Guid userId)
+		//{
+		//	try
+		//	{
+		//		var user = await this.dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
+
+		//		if(user == null)
+		//		{
+  //                  return APIResponse.Fail("User does not exist!");
+  //              }
+
+		//		var userName = user.UserName;
+				
+		//		return APIResponse.Success();
+		//	}
+		//	catch (Exception)
+		//	{
+  //              return APIResponse.Fail("An error occured while executing this task! " + e.Message);
+  //          }
+		//}
 		public async Task<APIResponse> AddOrRemoveFromFavPetsAsync(Guid userId, Guid petId)
 		{
 			try

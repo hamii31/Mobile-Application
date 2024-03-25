@@ -1,12 +1,69 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:PetAdoptionMobileApplication.ViewModels"
+             xmlns:models="clr-namespace:PetAdoptionMobileApplication.Models"
+             xmlns:dtos="clr-namespace:PetAdoptionMobileApplication.Common.DTOs;assembly=PetAdoptionMobileApplication.Common"
              x:Class="PetAdoptionMobileApplication.Pages.PetDetailsPage"
-             Title="PetDetailsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Shell.NavBarIsVisible="False"
+             Shell.PresentationMode="ModalAnimated"
+             x:DataType="vm:PetDetailsViewModel"
+             >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Border" x:Key="iconBtnContainer">
+                <Setter Property="Padding" Value="4"/>
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="StrokeShape" Value="RoundRectangle 5"/>
+                <Setter Property="StrokeThickness" Value="0"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid
+        RowDefinitions="Auto, *, *, Auto"
+        RowSpacing="20"
+        Padding="10,20,10,10">
+        
+        <!--Top of page-->
+        <FlexLayout
+            Grid.Row="0"
+            JustifyContent="SpaceBetween">
+            <Border
+               Style="{StaticResource iconBtnContainer}">
+                <Image
+                    Source="left_arrow_icon"/>
+            </Border>
+            <Label
+                Text="Pet Details"
+                FontSize="20"
+                FontAttributes="Bold"
+                VerticalOptions="Center"/>
+            <Border
+                  Style="{StaticResource iconBtnContainer}">
+                <Image
+                    Source="bx_heart"/>
+            </Border>
+        </FlexLayout>
+        <!--Top of page-->
+        
+        <!-- Image -->
+        <Border
+            Grid.Row="1"
+            HeightRequest="300"
+            WidthRequest="300"
+            StrokeShape="RoundRectangle 150"
+            StrokeThickness="0"
+            HorizontalOptions="Center">
+
+            <Image
+                Source="{Binding PetInfo.Image}"
+                HeightRequest="300"
+                WidthRequest="300"
+                Aspect="AspectFill"/>
+        </Border>
+        <!-- Image -->
+    </Grid>
 </ContentPage>

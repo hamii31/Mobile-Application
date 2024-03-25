@@ -9,7 +9,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Extensions
 		public static Expression<Func<Pet, PetListDTO>> PetEntityToPetListDTO =>
 			pet => new PetListDTO
 			{
-				Id = pet.Id,
+                Id = pet.Id.ToString(),
 				Name = pet.PetName,
 				Price = pet.Price,
 				Image = pet.Image, //$"{AppConstants.BaseAPIUrl}/images/pets/{pet.Image}" <- Doesn't work because the dev tunnel is fubar for some reason

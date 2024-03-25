@@ -105,12 +105,15 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 				return APIResponse<PetListDTO[]>.Fail("An error occured while executing this task! " + e.Message);
 			}
 		}
-		public async Task<APIResponse<PetInfoDTO>> GetPetInformationAsync(Guid Id)
+		public async Task<APIResponse<PetInfoDTO>> GetPetInformationAsync(string Id)
 		{
 			try
 			{
+
+				var petId = new Guid(Id);
+
 				var pet = await this.dbContext.Pets.AsTracking() // to increase view count for the pet
-											   .FirstOrDefaultAsync(p => p.Id == Id);
+											   .FirstOrDefaultAsync(p => p.Id == petId);
 
 				if (pet == null)
 				{
