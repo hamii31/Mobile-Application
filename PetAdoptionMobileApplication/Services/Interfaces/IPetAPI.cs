@@ -19,7 +19,7 @@ namespace PetAdoptionMobileApplication.Services.Interfaces
         [Get("/api/pets")] // api/pets
         Task<APIResponse<PetListDTO[]>> GetAllPetsAsync();
 
-        [Get($"/api/pets/info/Id")] // api/pets/info/Id (GUID)
+        [Get("/api/pets/info/{id}")] // api/pets/info/Id (GUID)
         Task<APIResponse<PetInfoDTO>> GetPetInformationAsync(string Id);
 
         [Get("/api/pets/youngest/{count}")] // api/pets/youngest/5

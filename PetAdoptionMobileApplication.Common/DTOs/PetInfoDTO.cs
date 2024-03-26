@@ -3,7 +3,7 @@
 namespace PetAdoptionMobileApplication.Common.DTOs
 {
 	public class PetInfoDTO : PetListDTO
-	{
+	{ 
 		public Guid Id { get; set; }
 		public bool IsFav { get; set; }
 		public string Description { get; set; }

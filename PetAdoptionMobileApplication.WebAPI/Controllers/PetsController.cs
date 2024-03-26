@@ -35,7 +35,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Controllers
 		public async Task<APIResponse<PetListDTO[]>> GetAllPetsAsync() 
 			=> await this.petService.GetAllPetsAsync();
 
-		[HttpGet("info/{Id}")] // api/pets/info/Id
+		[HttpGet("info/{id}")] // api/pets/info/Id
 		public async Task<APIResponse<PetInfoDTO>> GetPetInformationAsync(string Id) 
 			=> await this.petService.GetPetInformationAsync(Id);
 

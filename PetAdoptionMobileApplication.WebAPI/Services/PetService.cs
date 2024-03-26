@@ -110,7 +110,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 			try
 			{
 
-				var petId = new Guid(Id);
+				Guid petId = Guid.Parse(Id);
 
 				var pet = await this.dbContext.Pets.AsTracking() // to increase view count for the pet
 											   .FirstOrDefaultAsync(p => p.Id == petId);

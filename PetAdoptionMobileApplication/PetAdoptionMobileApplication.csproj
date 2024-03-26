@@ -56,6 +56,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Fonts\Lobster-Regular.ttf" />
+	  <None Remove="Resources\Images\age.png" />
+	  <None Remove="Resources\Images\breed.png" />
 	  <None Remove="Resources\Images\bunny_img.jpg" />
 	  <None Remove="Resources\Images\bx_adopted.svg" />
 	  <None Remove="Resources\Images\bx_all.svg" />
@@ -77,10 +79,6 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="Refit.HttpClientFactory" Version="7.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Controls\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -121,6 +119,10 @@
 	  <MauiXaml Update="Pages\ProfilePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Controls\" />
 	</ItemGroup>
 
 </Project>

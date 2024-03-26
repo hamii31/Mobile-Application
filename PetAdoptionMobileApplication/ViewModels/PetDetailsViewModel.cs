@@ -20,7 +20,7 @@
             IsBusy = true;
             try
             {
-
+                
                 var APIResponse = await this.petAPI.GetPetInformationAsync(value);
 
                 if (APIResponse.IsSuccess)
