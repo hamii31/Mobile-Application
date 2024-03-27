@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:PetAdoptionMobileApplication.ViewModels"
              xmlns:models="clr-namespace:PetAdoptionMobileApplication.Models"
              x:Class="PetAdoptionMobileApplication.Pages.LoginPage"
-             Title="LoginPage"
+             Title="Login / Register"
              x:DataType="vm:LoginViewModel">
 
     <Grid 

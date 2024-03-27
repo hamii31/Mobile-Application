@@ -23,6 +23,10 @@
                Style="{StaticResource iconBtnContainer}">
                 <Image
                     Source="left_arrow_icon"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding GoBackCommand}"/>
+                </Border.GestureRecognizers>
             </Border>
             <Label
                 Text="Pet Details"
@@ -53,6 +57,7 @@
                 Aspect="AspectFill"/>
         </Border>
         <!-- Image -->
+        
         <!-- Pet Details -->
         <Grid
             Grid.Row="2"
@@ -182,9 +187,19 @@
             </Grid>
         </Grid>
         <!-- Pet Details -->
+        
         <Button
             Text="Adopt Now"
             Grid.Row="3"
             Style="{StaticResource btnPrimary}"/>
+
+        <ActivityIndicator
+            Grid.Row="4"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Color="{StaticResource Primary}"
+            IsRunning="{Binding IsBusy}">
+            
+        </ActivityIndicator>
     </Grid>
 </ContentPage>

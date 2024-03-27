@@ -18,22 +18,9 @@ namespace PetAdoptionMobileApplication.Common.DTOs
 		{
 			get
 			{
-				var difference = DateTime.Now - BirthDate;
-				var days = difference.Days;
+				var difference = DateTime.Now.Year - BirthDate.Year;
 
-				switch (days)
-				{
-					case < 30:
-						return days + "days";
-					case >=30 and <= 31:
-						return "1 month";
-					case < 365:
-						return Math.Floor(difference.TotalDays / 30) + "months";
-					case 365:
-						return "1 year";
-					default:
-						return Math.Floor(difference.TotalDays / 30) + "years";
-				}
+				return difference.ToString() + " years";
 			}
 		}
 

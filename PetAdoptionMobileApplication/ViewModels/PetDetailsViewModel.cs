@@ -20,7 +20,7 @@
             IsBusy = true;
             try
             {
-                
+                await Task.Delay(100); // To see activity indicator
                 var APIResponse = await this.petAPI.GetPetInformationAsync(value);
 
                 if (APIResponse.IsSuccess)
@@ -42,5 +42,8 @@
                 IsBusy = false;
             }
         }
+
+        [RelayCommand]
+        private async Task GoBack() => await GoToAsync(".."); // When using Shell, .. means go back to the previous page.
     }
 }

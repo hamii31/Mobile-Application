@@ -31,8 +31,14 @@ namespace PetAdoptionMobileApplication.WebAPI.Data
 			modelBuilder.Entity<UserFavs>()
 						.HasKey(f => new { f.UserId, f.PetId });
 
-			modelBuilder.Entity<Pet>().HasData(InitialPetData());
-		}
+
+            modelBuilder.Entity<Pet>()
+                .Property(p => p.BirthDate)
+                .HasDefaultValueSql("GETDATE()");
+
+            modelBuilder.Entity<Pet>()
+                .HasData(InitialPetData());
+        }
 
 		private static List<Pet> InitialPetData()
 		{
