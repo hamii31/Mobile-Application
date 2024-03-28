@@ -1,4 +1,4 @@
-This is a complete Pet Adoption Mobile App - You can adopt pets (maybe list pets for adoption); Sort pets by age, by view count, by gender, by breed; It contains a user JWT factory.
+This is a Full-Stack Mobile App - You can adopt pets; Be shown pets ordered by age, by popularity, by gender, by breed; It contains a user JWT factory, custom Message Handler and Trust Provider. 
 
 The data is fetched via API from a DB.
 
