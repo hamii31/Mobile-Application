@@ -32,7 +32,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Data
 						.HasKey(f => new { f.UserId, f.PetId });
 
 
-            modelBuilder.Entity<Pet>()
+			modelBuilder.Entity<Pet>()
                 .Property(p => p.BirthDate)
                 .HasDefaultValueSql("GETDATE()");
 
@@ -92,6 +92,42 @@ namespace PetAdoptionMobileApplication.WebAPI.Data
 					BirthDate = new DateTime(2017, 12, 20),
 					IsActive = true
 				}
+				//new Pet
+				//{
+				//	Id= Guid.NewGuid(),
+				//	PetName = "Bobo",
+				//	Breed = "Rabbit - House Bunny",
+				//	Price = 150,
+				//	Description = "Energetic, playful, caring, loves carrots",
+				//	Gender = Gender.Male,
+				//	Image = "bobo.jpg",
+				//	BirthDate = new DateTime(2020, 01, 20),
+				//	IsActive = true
+				//},
+				//new Pet
+				//{
+				//	Id = Guid.NewGuid(),
+				//	PetName = "Tess",
+				//	Breed = "Turtle - Pond Slider",
+				//	Price = 160,
+				//	Description = "Easy-going, chill, peaceful, loves cabbage",
+				//	Gender = Gender.Female,
+				//	Image = "tess.jpg",
+				//	BirthDate = new DateTime(2000, 02, 15),
+				//	IsActive = true
+    //            },
+				//new Pet
+				//{
+				//	Id = Guid.NewGuid(),
+				//	PetName = "Alonso",
+				//	Breed = "Parrot - Amazon Parrot",
+				//	Price = 300,
+				//	Description = "Loves to sing, adores seeds, likes to fly freely and always finds his way back home",
+				//	Gender = Gender.Male,
+				//	Image = "parrot.jpg",
+				//	BirthDate = new DateTime(2018, 08, 20),
+				//	IsActive = true
+				//}
 			};
 
 			return pets;

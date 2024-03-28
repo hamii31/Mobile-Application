@@ -67,7 +67,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pets");
+                    b.ToTable("Pets", (string)null);
 
                     b.HasData(
                         new
@@ -151,7 +151,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("PetAdoptionMobileApplication.WebAPI.Data.Entities.UserAdoptions", b =>
@@ -175,7 +175,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Adoptions");
+                    b.ToTable("Adoptions", (string)null);
                 });
 
             modelBuilder.Entity("PetAdoptionMobileApplication.WebAPI.Data.Entities.UserFavs", b =>
@@ -198,7 +198,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
 
                     b.HasIndex("UserId1");
 
-                    b.ToTable("Favs");
+                    b.ToTable("Favs", (string)null);
                 });
 
             modelBuilder.Entity("PetAdoptionMobileApplication.WebAPI.Data.Entities.UserAdoptions", b =>
