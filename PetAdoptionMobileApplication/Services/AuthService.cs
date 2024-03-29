@@ -70,13 +70,15 @@ namespace PetAdoptionMobileApplication.Services
             }
 
             SetUserAndToken(APIResponse);
+            this.commonService.ToggleLoginStatus();
             return APIResponse.IsSuccess;
         }
 
-        public async Task Logout()
+        public void Logout()
         {
             this.commonService.SetToken(null);
             Preferences.Default.Remove(UIConstants.UserInfo);
+            this.commonService.ToggleLoginStatus();
         }
 
         public LoggedInUserRecord GetUser()

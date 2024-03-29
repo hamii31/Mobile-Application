@@ -1,13 +1,36 @@
-﻿using Refit;
+﻿using PetAdoptionMobileApplication.Services;
+using Refit;
 
 namespace PetAdoptionMobileApplication.ViewModels
 {
     public partial class HomeViewModel : BaseViewModel
     {
         private readonly IPetAPI petAPI;
-        public HomeViewModel(IPetAPI petAPI)
+        private readonly CommonService commonService;
+        private readonly AuthService authService;
+
+        public HomeViewModel(IPetAPI petAPI, CommonService commonService, AuthService authService)
         {
             this.petAPI = petAPI;
+            this.commonService = commonService;
+            this.authService = authService;
+            this.commonService.LoginStatusChanged += OnLoginStatusChanged;
+            SetUserInfo();
+        }
+
+        private void OnLoginStatusChanged(object sender, EventArgs e) => SetUserInfo();
+
+        private void SetUserInfo()
+        {
+            if (this.authService.IsLoggedIn)
+            {
+                var userInfo = this.authService.GetUser();
+                UserName = userInfo.Name;
+            }
+            else
+            {
+                UserName = "Anon_User";
+            }
         }
 
         [ObservableProperty]
@@ -31,7 +54,7 @@ namespace PetAdoptionMobileApplication.ViewModels
         private bool isInitialized;
 
         [ObservableProperty]
-        private string userName = "User";
+        private string userName = "Anon_User";
 
         public async Task InitializeAsync()
         {

@@ -74,6 +74,7 @@
 	  <None Remove="Resources\Images\loading_img.jpg" />
 	  <None Remove="Resources\Images\male.svg" />
 	  <None Remove="Resources\Images\parrot.jpg" />
+	  <None Remove="Resources\Images\right_arrow_icon.png" />
 	  <None Remove="Resources\Images\tess.jpg" />
 	</ItemGroup>
 

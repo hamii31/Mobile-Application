@@ -54,6 +54,9 @@ namespace PetAdoptionMobileApplication
 
 			// adding routing for the pet details page using communitytoolkit
 			services.AddTransientWithShellRoute<PetDetailsPage, PetDetailsViewModel>(nameof(PetDetailsPage));
+
+			services.AddTransient<ProfileViewModel>()
+					.AddTransient<ProfilePage>();
 		}
 
 		static void ConfigureRefit(IServiceCollection services)
