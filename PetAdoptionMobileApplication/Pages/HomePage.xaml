@@ -18,7 +18,8 @@
                          HeightRequest="100"
                          WidthRequest="100"
                          StrokeShape="RoundRectangle 50"
-                         StrokeThickness="0">
+                         StrokeThickness="5"
+                         Stroke="{StaticResource Primary}">
 
                         <Image
                              Source="{Binding Image}"
@@ -96,13 +97,15 @@
                                     HeightRequest="200"
                                     WidthRequest="200"
                                     StrokeShape="RoundRectangle 125"
-                                    StrokeThickness="0">
+                                    StrokeThickness="5"
+                                    Stroke="{StaticResource Primary}">
 
                                     <Image 
                                         Source="{Binding Image}"
                                         HeightRequest="200"
                                         WidthRequest="200"
-                                        Aspect="AspectFill"/>
+                                        Aspect="AspectFill">
+                                    </Image>
 
                                 </Border>
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PetAdoptionMobileApplication.Common.DTOs;
 using PetAdoptionMobileApplication.WebAPI.Data;
+using PetAdoptionMobileApplication.WebAPI.Data.Entities;
 using PetAdoptionMobileApplication.WebAPI.Extensions;
 using PetAdoptionMobileApplication.WebAPI.Services.Interfaces;
 

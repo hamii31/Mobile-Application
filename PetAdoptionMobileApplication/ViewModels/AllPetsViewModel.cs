@@ -40,6 +40,7 @@
                 IsRefreshing = true;
             try
             {
+                await Task.Delay(100);
                 var APIResponse = await this.petAPI.GetAllPetsAsync();
 
                 if (APIResponse.IsSuccess)

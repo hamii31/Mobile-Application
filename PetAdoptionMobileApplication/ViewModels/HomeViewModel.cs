@@ -72,11 +72,7 @@ namespace PetAdoptionMobileApplication.ViewModels
             }
         }
 
-        [RelayCommand]
-        private async Task GoToDetailsPage(string PetId)
-        {
-           await GoToAsync($"{nameof(PetDetailsPage)}?{nameof(PetDetailsViewModel.PetId)}={PetId}");
-        }
+        
 
     }
 }

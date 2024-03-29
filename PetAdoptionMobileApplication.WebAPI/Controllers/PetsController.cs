@@ -50,6 +50,5 @@ namespace PetAdoptionMobileApplication.WebAPI.Controllers
 		[HttpGet("{gender}")] // api/pets/gender
 		public async Task<APIResponse<PetListDTO[]>> GetPetsByGender(string gender) 
 			=> await this.petService.GetPetsByGender(gender);
-
 	}
 }

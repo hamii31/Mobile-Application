@@ -48,8 +48,6 @@ namespace PetAdoptionMobileApplication.ViewModels
 
 			IsBusy = true;
 
-			// Make API call to login/register user, but for now just Skip when Logging in
-
 			var status = await this.authService.LoginOrRegisterAsync(Model);
 
 			if (status) // if there was an error, it would have been shown to the user

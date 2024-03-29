@@ -20,5 +20,11 @@
 			=> await App.Current.MainPage.DisplayAlert(title, message, btnText);
 		protected async Task ConfirmationAsync(string title, string message, string okBtnText, string cancelBtnText)
 			=> await App.Current.MainPage.DisplayAlert(title, message, okBtnText, cancelBtnText);
-	}
+
+        [RelayCommand]
+        private async Task GoToDetailsPage(string PetId)
+        {
+            await GoToAsync($"{nameof(PetDetailsPage)}?{nameof(PetDetailsViewModel.PetId)}={PetId}");
+        }
+    }
 }

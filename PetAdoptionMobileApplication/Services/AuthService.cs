@@ -1,5 +1,4 @@
-﻿using PetAdoptionMobileApplication.Common.DTOs;
-using Refit;
+﻿using Refit;
 
 namespace PetAdoptionMobileApplication.Services
 {

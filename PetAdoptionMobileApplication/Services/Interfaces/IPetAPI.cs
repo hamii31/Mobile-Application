@@ -30,6 +30,5 @@ namespace PetAdoptionMobileApplication.Services.Interfaces
 
         [Get("/api/pets/{gender}")] // api/pets/gender
         Task<APIResponse<PetListDTO[]>> GetPetsByGender(string gender);
-
     }
 }

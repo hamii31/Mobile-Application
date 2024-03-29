@@ -9,14 +9,94 @@
              x:DataType="vm:AllPetsViewModel">
 
     <Grid>
-        <RefreshView>
+        <RefreshView
+            RefreshColor="{StaticResource Primary}"
+            IsRefreshing="{Binding IsRefreshing}"
+            Command="{Binding RefreshAllPetsCommand}">
             <Grid
                 RowDefinitions="Auto, *">
+                <!-- Refresh Handle -->
                 <Label
                     Grid.Row="0"
                     Text="Pull to refresh"
-                    FontSize="16"/>
+                    FontSize="16"
+                    HorizontalOptions="Center"
+                    Padding="5"
+                    TextColor="{StaticResource Gray200}"/>
+                
+                <!-- Content -->
+                <ScrollView
+                    Grid.Row="1"
+                    Padding="5">
+
+                    <CollectionView
+                        ItemsSource="{Binding Pets}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="dtos:PetListDTO">
+                                <VerticalStackLayout
+                                    Margin="5,10">
+   
+                                    <Border
+                                        StrokeShape="RoundRectangle 15,0,0,0"
+                                        StrokeThickness="0">
+                                        <Grid
+                                            ColumnDefinitions="Auto, *"
+                                            ColumnSpacing="15">
+                                            <Image
+                                                Grid.Column="0"
+                                                Source="{Binding Image}"
+                                                HeightRequest="125"
+                                                WidthRequest="125"
+                                                Aspect="AspectFill">
+                                                <Image.Shadow>
+                                                    <Shadow Brush="{StaticResource Primary}"
+                                                            Radius="50"/>
+                                                </Image.Shadow>
+                                            </Image>
+                                            <VerticalStackLayout
+                                                Grid.Column="1"
+                                                VerticalOptions="Center"
+                                                Spacing="8">
+                                                <Label Text="{Binding Name}"
+                                                       FontSize="20"
+                                                       FontAttributes="Bold"
+                                                       TextColor="{StaticResource Primary}"/>
+                                                <Label Text="{Binding Breed}"
+                                                       FontSize="16"
+                                                       TextColor="{StaticResource Gray500}"/>
+                                                <Label Text="{Binding Price, StringFormat='{0:C}'}"
+                                                       FontSize="16"
+                                                       FontAttributes="Bold"
+                                                       TextColor="{StaticResource Primary}"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </Border>
+
+                                    <!-- Separating Line -->
+                                    <BoxView
+                                        Color="{StaticResource Primary}"
+                                        HeightRequest="1"
+                                        Margin="0, -3, 0, 0"
+                                        Opacity="0.3"/>
+
+                                    <VerticalStackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                                 Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:AllPetsViewModel}}, Path=GoToDetailsPageCommand}"
+                                                 CommandParameter="{Binding Id}"/>  
+                                    </VerticalStackLayout.GestureRecognizers>
+                                </VerticalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                    
+                </ScrollView>
             </Grid>
         </RefreshView>
+
+        <ActivityIndicator
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Color="{StaticResource Primary}"
+            IsRunning="{Binding IsBusy}"/>
     </Grid>
 </ContentPage>
