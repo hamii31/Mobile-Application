@@ -36,7 +36,22 @@
             <Border
                   Style="{StaticResource iconBtnContainer}">
                 <Image
-                    Source="bx_heart"/>
+                    Source="bx_heart">
+                    <Image.Triggers>
+                        <DataTrigger
+                            TargetType="Image"
+                            Binding="{Binding PetInfo.IsFav}"
+                            Value="True">
+                            <Setter
+                                Property="Source"
+                                Value="heart_filled.png"/>
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding ToggleIsFavCommand}"/>
+                </Border.GestureRecognizers>
             </Border>
         </FlexLayout>
         <!--Top of page-->

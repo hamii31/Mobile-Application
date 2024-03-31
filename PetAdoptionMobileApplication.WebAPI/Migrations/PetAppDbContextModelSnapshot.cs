@@ -32,7 +32,9 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Breed")
                         .IsRequired()
@@ -67,12 +69,12 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pets", (string)null);
+                    b.ToTable("Pets");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ed273b65-b091-49f1-8b05-35ae7313e0af"),
+                            Id = new Guid("25c1865e-3b63-474f-8ab4-ecf7c7e8108c"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2015, 9, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Dog - Alaskan Klee Kai",
@@ -86,7 +88,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e03dbb3e-09d1-4add-9e4e-32f501e7a1a5"),
+                            Id = new Guid("7cc2b416-8aef-46ac-8d75-f51ce86ca2b7"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2007, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Cat - Siamese",
@@ -100,7 +102,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("28d3482d-f301-40e7-b855-a8a0006c5eb3"),
+                            Id = new Guid("4a9d468c-0e2a-4adb-8abe-af565af54587"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2020, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Dog - Belgian Malinois",
@@ -114,7 +116,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1fdca0bb-1329-423f-b0eb-606100ed303a"),
+                            Id = new Guid("a34ec152-1816-40fb-a0c3-5954e4e875b3"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2017, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Cat - Snowshoe",
@@ -124,6 +126,48 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                             IsActive = true,
                             PetName = "Pearl",
                             Price = 500.0,
+                            View = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("9e0b663c-35e1-4628-b734-b0b35defd012"),
+                            AdoptionStatus = 1,
+                            BirthDate = new DateTime(2020, 7, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Breed = "Bunny - House Bunny",
+                            Description = "Playful, caring, loving",
+                            Gender = 0,
+                            Image = "bobo.jpg",
+                            IsActive = true,
+                            PetName = "Bobo",
+                            Price = 150.0,
+                            View = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("031d2caa-c85d-47f8-a9b3-a2f3d4ee965b"),
+                            AdoptionStatus = 1,
+                            BirthDate = new DateTime(2000, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Breed = "Turtle - Pond Slider",
+                            Description = "Easy-going, chill, peaceful, loves cabbage",
+                            Gender = 1,
+                            Image = "tess.jpg",
+                            IsActive = true,
+                            PetName = "Tess",
+                            Price = 160.0,
+                            View = 0
+                        },
+                        new
+                        {
+                            Id = new Guid("605a2ad7-6934-4be1-aeef-ba91cbf9f914"),
+                            AdoptionStatus = 1,
+                            BirthDate = new DateTime(2018, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Breed = "Parrot - Amazon Parrot",
+                            Description = "Loves to sing, adores seeds, likes to fly freely and always finds his way back home",
+                            Gender = 0,
+                            Image = "parrot.jpg",
+                            IsActive = true,
+                            PetName = "Alonso",
+                            Price = 300.0,
                             View = 0
                         });
                 });
@@ -151,7 +195,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("PetAdoptionMobileApplication.WebAPI.Data.Entities.UserAdoptions", b =>
@@ -175,30 +219,30 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Adoptions", (string)null);
+                    b.ToTable("Adoptions");
                 });
 
             modelBuilder.Entity("PetAdoptionMobileApplication.WebAPI.Data.Entities.UserFavs", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("PetId")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<Guid>("PetId1")
+                    b.Property<Guid>("PetId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("UserId1")
+                    b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("UserId", "PetId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("PetId1");
+                    b.HasIndex("PetId");
 
-                    b.HasIndex("UserId1");
+                    b.HasIndex("UserId");
 
-                    b.ToTable("Favs", (string)null);
+                    b.ToTable("Favs");
                 });
 
             modelBuilder.Entity("PetAdoptionMobileApplication.WebAPI.Data.Entities.UserAdoptions", b =>
@@ -224,13 +268,13 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                 {
                     b.HasOne("PetAdoptionMobileApplication.WebAPI.Data.Entities.Pet", "Pet")
                         .WithMany()
-                        .HasForeignKey("PetId1")
+                        .HasForeignKey("PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("PetAdoptionMobileApplication.WebAPI.Data.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId1")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

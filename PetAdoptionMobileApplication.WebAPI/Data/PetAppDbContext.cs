@@ -28,8 +28,8 @@ namespace PetAdoptionMobileApplication.WebAPI.Data
 		{
 			base.OnModelCreating(modelBuilder);
 
-			modelBuilder.Entity<UserFavs>()
-						.HasKey(f => new { f.UserId, f.PetId });
+			//modelBuilder.Entity<UserFavs>()
+			//			.HasKey(f => new { f.UserId, f.PetId});
 
 
 			modelBuilder.Entity<Pet>()
@@ -38,8 +38,8 @@ namespace PetAdoptionMobileApplication.WebAPI.Data
 
             modelBuilder.Entity<Pet>()
                 .HasData(InitialPetData());
-        }
 
+        }
 		private static List<Pet> InitialPetData()
 		{
 			var pets = new List<Pet>()
@@ -91,8 +91,44 @@ namespace PetAdoptionMobileApplication.WebAPI.Data
 					Image = "pearl.jpg",
 					BirthDate = new DateTime(2017, 12, 20),
 					IsActive = true
-				}
-			};
+				},
+                new Pet
+                {
+                    Id = Guid.NewGuid(),
+                    PetName = "Bobo",
+                    Breed = "Bunny - House Bunny",
+                    Price = 150,
+                    Description = "Playful, caring, loving",
+                    Gender = Gender.Male,
+                    Image = "bobo.jpg",
+                    BirthDate = new DateTime(2020, 07, 29),
+                    IsActive = true
+                },
+                new Pet
+                {
+                    Id = Guid.NewGuid(),
+                    PetName = "Tess",
+                    Breed = "Turtle - Pond Slider",
+                    Price = 160,
+                    Description = "Easy-going, chill, peaceful, loves cabbage",
+                    Gender = Gender.Female,
+                    Image = "tess.jpg",
+                    BirthDate = new DateTime(2000, 08, 01),
+                    IsActive = true
+                },
+                new Pet
+                {
+                    Id = Guid.NewGuid(),
+                    PetName = "Alonso",
+                    Breed = "Parrot - Amazon Parrot",
+                    Price = 300,
+                    Description = "Loves to sing, adores seeds, likes to fly freely and always finds his way back home",
+                    Gender = Gender.Male,
+                    Image = "parrot.jpg",
+                    BirthDate = new DateTime(2018, 03, 03),
+                    IsActive = true
+                }
+            };
 
 			return pets;
 		}

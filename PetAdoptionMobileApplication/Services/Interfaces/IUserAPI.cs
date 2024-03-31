@@ -1,5 +1,4 @@
-﻿using PetAdoptionMobileApplication.Common.DTOs;
-using Refit;
+﻿using Refit;
 
 namespace PetAdoptionMobileApplication.Services.Interfaces
 {
@@ -7,7 +6,7 @@ namespace PetAdoptionMobileApplication.Services.Interfaces
     public interface IUserAPI
     {
         [Post("/api/user/favourites/{petId}")] // api/user/favourites/petId
-        Task<APIResponse> AddOrRemoveFromFavPetsAsync(Guid petId);
+        Task<APIResponse> AddOrRemoveFromFavPetsAsync(string petId);
 
         [Get("/api/user/favourites")] // api/user/favourites
         Task<APIResponse<PetListDTO[]>> GetAllFavPetsAsync();
@@ -16,6 +15,9 @@ namespace PetAdoptionMobileApplication.Services.Interfaces
         Task<APIResponse<PetListDTO[]>> GetUserAdoptionsAsync();
 
         [Post("/api/user/adopt/{petId}")] // api/user/adopt/petId
-        Task<APIResponse> AdoptPetAsync(Guid petId);
+        Task<APIResponse> AdoptPetAsync(string petId);
+
+        [Get("/api/user/pet-info/{petId}")] // api/user/pet-info/petId
+        Task<APIResponse<PetInfoDTO>> GetPetInformationAsync(string petId);
     }
 }

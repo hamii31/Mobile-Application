@@ -1,8 +1,12 @@
-﻿namespace PetAdoptionMobileApplication.WebAPI.Data.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PetAdoptionMobileApplication.WebAPI.Data.Entities
 {
-	public class UserFavs
+    public class UserFavs
 	{
-		public Guid UserId { get; set; }
+		[Key]
+		public int Id { get; set; }
+        public Guid UserId { get; set; }
 		public Guid PetId { get; set; }
 		public virtual User User { get; set; }
 		public virtual Pet Pet { get; set; }

@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using PetAdoptionMobileApplication.Common.DTOs;
 using PetAdoptionMobileApplication.WebAPI.Data;
-using PetAdoptionMobileApplication.WebAPI.Data.Entities;
 using PetAdoptionMobileApplication.WebAPI.Extensions;
 using PetAdoptionMobileApplication.WebAPI.Services.Interfaces;
 
 namespace PetAdoptionMobileApplication.WebAPI.Services
 {
-	public class PetService : IPetService
+    public class PetService : IPetService
 	{
 		private readonly PetAppDbContext dbContext;
 
@@ -106,15 +106,15 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 				return APIResponse<PetListDTO[]>.Fail("An error occured while executing this task! " + e.Message);
 			}
 		}
-		public async Task<APIResponse<PetInfoDTO>> GetPetInformationAsync(string Id)
+		public async Task<APIResponse<PetInfoDTO>> GetPetInformationAsync(string petId, Guid? userId)
 		{
 			try
 			{
 
-				Guid petId = Guid.Parse(Id);
+				Guid Id = Guid.Parse(petId);
 
 				var pet = await this.dbContext.Pets.AsTracking() // to increase view count for the pet
-											   .FirstOrDefaultAsync(p => p.Id == petId);
+											   .FirstOrDefaultAsync(p => p.Id == Id);
 
 				if (pet == null)
 				{
@@ -128,6 +128,23 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 				}
 
 				var petDTO = pet!.MapToPetInfoDTO();
+
+				if (userId != Guid.Empty)
+				{
+					var user = await this.dbContext.Users.AnyAsync(u => u.Id == userId);
+
+                    if(user)
+					{
+                        if (await this.dbContext.Favs.AnyAsync(u => u.UserId == userId && u.PetId == Id))
+                        {
+                            petDTO.IsFav = true;
+                        }
+                    }
+					else
+					{
+                        return APIResponse<PetInfoDTO>.Fail("User doesn't exist in the database!");
+                    }
+                }
 
 				return APIResponse<PetInfoDTO>.Success(petDTO);
 			}

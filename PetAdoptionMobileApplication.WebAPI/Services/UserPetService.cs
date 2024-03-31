@@ -12,37 +12,23 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 	{
 		private static readonly SemaphoreSlim semaphoreSlim = new (1, 1);
 		private readonly PetAppDbContext dbContext;
+        private readonly IPetService petService;
 
-		public UserPetService(PetAppDbContext dbContext)
+        public UserPetService(PetAppDbContext dbContext, IPetService petService)
         {
 			this.dbContext = dbContext;
-		}
+            this.petService = petService;
+        }
 
-		//public async Task<APIResponse> GetUserNameAsync(Guid userId)
-		//{
-		//	try
-		//	{
-		//		var user = await this.dbContext.Users.FirstOrDefaultAsync(u => u.Id == userId);
-
-		//		if(user == null)
-		//		{
-  //                  return APIResponse.Fail("User does not exist!");
-  //              }
-
-		//		var userName = user.UserName;
-				
-		//		return APIResponse.Success();
-		//	}
-		//	catch (Exception)
-		//	{
-  //              return APIResponse.Fail("An error occured while executing this task! " + e.Message);
-  //          }
-		//}
-		public async Task<APIResponse> AddOrRemoveFromFavPetsAsync(Guid userId, Guid petId)
+		
+		public async Task<APIResponse> AddOrRemoveFromFavPetsAsync(Guid userId, string petId)
 		{
 			try
 			{
-				var userFavourite = await this.dbContext.Favs.FirstOrDefaultAsync(uf => uf.UserId == userId && uf.PetId == petId);
+
+                Guid pet = Guid.Parse(petId);
+
+                var userFavourite = await this.dbContext.Favs.FirstOrDefaultAsync(uf => uf.UserId == userId && uf.PetId == pet);
 
 				if (userFavourite != null) // we remove it in this case
 				{
@@ -53,7 +39,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 					userFavourite = new UserFavs()
 					{
 						UserId = userId,
-						PetId = petId
+						PetId = pet
 					};
 
 					await this.dbContext.Favs.AddAsync(userFavourite);
@@ -103,8 +89,9 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 				return APIResponse<PetListDTO[]>.Fail("An error occured while fetching this data! " + e.Message);
 			}
 		}
-		public async Task<APIResponse> AdoptPetAsync(Guid userId, Guid petId)
+		public async Task<APIResponse> AdoptPetAsync(Guid userId, string petId)
 		{
+			 Guid Id = Guid.Parse(petId);
 			try
 			{
 				await semaphoreSlim.WaitAsync(); // adopting a specific pet should be available to one user at a time,
@@ -112,7 +99,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 												 //
 												 // Example: Two requests are made for adopting one pet, the first one to reach this method will be forwarded, while the second will wait for the first one to finish.
 
-				var pet = await this.dbContext.Pets.AsTracking().FirstOrDefaultAsync(p => p.Id == petId);
+				var pet = await this.dbContext.Pets.AsTracking().FirstOrDefaultAsync(p => p.Id == Id);
 
 				if (pet == null)
 				{
@@ -129,7 +116,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 				var adoption = new UserAdoptions
 				{
 					UserId = userId,
-					PetId = petId,
+					PetId = Id,
 					AdoptedOn = DateTime.UtcNow
 				};
 
@@ -148,5 +135,5 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 			}
 
 		}
-	}
+    }
 }

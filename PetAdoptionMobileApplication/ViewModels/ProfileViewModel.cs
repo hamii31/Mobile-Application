@@ -46,6 +46,7 @@ namespace PetAdoptionMobileApplication.ViewModels
                 var userInfo = this.authService.GetUser();
                 UserName = userInfo.Name;
                 IsLoggedIn = true;
+                this.commonService.SetToken(userInfo.Token);
             }
             else
             {
@@ -64,7 +65,7 @@ namespace PetAdoptionMobileApplication.ViewModels
             else
             {
                 authService.Logout();
-                await GoToAsync($"//{nameof(BoardingPage)}");
+                await GoToAsync($"//{nameof(HomePage)}");
             }
         }
 
