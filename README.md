@@ -17,7 +17,7 @@ Also, one of the pages doesn't want to load its content, although the back-end s
 CONCLUSION:
 
 POSITIVES:
-I gained a lot of practical experience in creating User functionalities for mobile apps (Login/Register, Logged-In User Content, Anonymous User Content), Exception Handling, API experience, MS SQL Experience. 
+I gained a lot of practical experience in creating User functionalities for mobile apps (Login/Register, User Credibility Checks, Logged-In User Content, Anonymous User Content), Exception Handling, API experience, MS SQL Experience. 
 
 NEGATIVES:
 I've heard that .NET MAUI has issues, now I can attest to those issues. The experience I got from this project is that of debugging a new issue everyday and fixing it, only for a new one to take its place -> patience. Adaptability is another one, given how wildy different each issue was. I had to create a "Dangerous" Trust Provider for the app to work in Development. I had to reinstall the Android Emulator multiple times, because it wouldn't load at all. I had to re-do my DB migrations, because the original one was creating major issues. 
