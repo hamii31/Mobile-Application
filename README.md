@@ -21,3 +21,5 @@ I gained a lot of practical experience in creating User functionalities for mobi
 
 NEGATIVES:
 I've heard that .NET MAUI has issues, now I can attest to those issues. The experience I got from this project is that of debugging a new issue everyday and fixing it, only for a new one to take its place -> patience. Adaptability is another one, given how wildy different each issue was. I had to create a "Dangerous" Trust Provider for the app to work in Development. I had to reinstall the Android Emulator multiple times, because it wouldn't load at all. I had to re-do my DB migrations, because the original one was creating major issues. 
+
+I'm not giving up on this project, but given the lack of documentation or even understanding of the problems, I'll have to sit back and do some research.
