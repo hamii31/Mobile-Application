@@ -1,5 +1,7 @@
 This is a Full-Stack Mobile App - You can adopt pets; Will be shown pets ordered by age, by popularity, by gender and by breed; It contains a user JWT factory, custom Message Handler and Trust Provider. 
 
+See how the App looks in PetAdoptionMobileApplication/Screenshots
+
 The data is fetched via API from a DB.
 
 The application is made in .NET MAUI with C# and XAML
