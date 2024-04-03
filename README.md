@@ -15,6 +15,7 @@ As of 03/04/2024, the app cannot load photos because they are too large (an issu
 Also, one of the pages doesn't want to load its content, although the back-end shows 200 status code, the data that must be shown is parsed without an issue, but when it comes to the front-end it just doesn't want to load. (Interestingly enough, I used the same UI I use on a different page and the content loaded, but after that it just disappeared. The API is serving the correct data without error, numerous hours of debugging the app's back-end didn't amount to something and the front-end just doesn't work. 
 
 CONCLUSION:
+
 POSITIVES:
 I gained a lot of practical experience in creating User functionalities for mobile apps (Login/Register, Logged-In User Content, Anonymous User Content), Exception Handling, API experience, MS SQL Experience. 
 
