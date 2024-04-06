@@ -58,9 +58,11 @@ namespace PetAdoptionMobileApplication
 			services.AddTransient<ProfileViewModel>()
 					.AddTransient<ProfilePage>();
 
-            services.AddTransient<UserFavouritesViewModel>()
+		        services.AddTransient<UserFavouritesViewModel>()
 					.AddTransient<FavsPage>();
-        }
+			services.AddTransient<MyAdoptionsViewModel>()
+					.AddTransient<AdoptionsPage>();
+       		}
 
 		static void ConfigureRefit(IServiceCollection services)
 		{
