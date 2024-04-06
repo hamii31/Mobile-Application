@@ -1,4 +1,4 @@
-﻿using PetAdoptionMobileApplication.Services;
+using PetAdoptionMobileApplication.Services;
 using Refit;
 
 namespace PetAdoptionMobileApplication.ViewModels
@@ -88,7 +88,7 @@ namespace PetAdoptionMobileApplication.ViewModels
             }
             catch (ApiException ex)
             {
-                await ShowAlertAsync("Error", ex.Message, "Ok");
+                await ShowAlertAsync("Something went wrong!", ex.Message, "Ok");
             }
             finally
             {
