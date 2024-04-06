@@ -1,4 +1,4 @@
-﻿using Refit;
+using Refit;
 
 namespace PetAdoptionMobileApplication.Services.Interfaces
 {
@@ -19,5 +19,8 @@ namespace PetAdoptionMobileApplication.Services.Interfaces
 
         [Get("/api/user/pet-info/{petId}")] // api/user/pet-info/petId
         Task<APIResponse<PetInfoDTO>> GetPetInformationAsync(string petId);
+
+        [Post("/api/user/change-password")]
+        Task<APIResponse> ChangePasswordAsync(SingleValueDTO<string> password);
     }
 }
