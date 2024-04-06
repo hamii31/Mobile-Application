@@ -22,6 +22,7 @@ namespace PetAdoptionMobileApplication.ViewModels
             if (!this.authService.IsLoggedIn)
             {
                 await ShowToastAsync("You need to be logged in!");
+                await GoToAsync($"//{nameof(ProfilePage)}");
                 return;
             }
 
