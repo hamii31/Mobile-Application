@@ -103,5 +103,45 @@ namespace PetAdoptionMobileApplication.ViewModels
                 IsBusy = false;
             }
         }
+        
+        [RelayCommand]
+        private async Task AdoptAsync()
+        {
+            // Uncomment to design the Adoption Successfull Page without adopting.
+            //await GoToAsync(nameof(AdoptionSuccessfulPage));
+            //return;
+        
+            if (!this.authService.IsLoggedIn)
+            {
+                await ShowToastAsync("You need to be logged in!");
+                return;
+            }
+        
+            IsBusy = true;
+            try
+            {
+                var APIResponse = await this.userAPI.AdoptPetAsync(PetId);
+        
+                if (APIResponse.IsSuccess)
+                {
+                    PetInfo.AdoptionStatus = AdoptionStatus.Unavailable; // so the "Adopt" button changes immediately.
+                    await GoToAsync(nameof(AdoptionSuccessfulPage));
+                }
+                else
+                {
+                    await ShowAlertAsync("An error occured while adopting this pet!", APIResponse.Message, "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await ShowAlertAsync("An error occured while executing this task!", ex.Message, "OK");
+                IsBusy = false;
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }   
+        
     }
 }
