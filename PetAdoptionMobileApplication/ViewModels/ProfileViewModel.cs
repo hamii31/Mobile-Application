@@ -1,4 +1,4 @@
-﻿using PetAdoptionMobileApplication.Services;
+using PetAdoptionMobileApplication.Services;
 
 namespace PetAdoptionMobileApplication.ViewModels
 {
@@ -6,11 +6,13 @@ namespace PetAdoptionMobileApplication.ViewModels
     {
         private readonly AuthService authService;
         private readonly CommonService commonService;
+        private readonly IUserAPI userAPI;
 
-        public ProfileViewModel(AuthService authService,CommonService commonService)
+        public ProfileViewModel(AuthService authService,CommonService commonService, IUserAPI userAPI)
         {
             this.authService = authService;
             this.commonService = commonService;
+            this.userAPI = userAPI;
             this.commonService.LoginStatusChanged += OnLoginStatusChanged;
             SetUserInfo();
         }
@@ -73,6 +75,37 @@ namespace PetAdoptionMobileApplication.ViewModels
         private async Task GoToAdoptionsPage()
         {
             await GoToAsync($"//{nameof(AdoptionsPage)}");
+        }
+
+        [RelayCommand]
+        private async Task ChangePassAsync()
+        {
+            if (!this.authService.IsLoggedIn)
+            {
+                await ShowToastAsync("You need to be logged in!");
+                return;
+            }
+
+            var newPassword = await App.Current.MainPage.DisplayPromptAsync("Action", "Change Password", placeholder: "Enter new password");
+            if (!string.IsNullOrWhiteSpace(newPassword))
+            {
+                IsBusy = true;
+                try
+                {
+                    await this.userAPI.ChangePasswordAsync(new SingleValueDTO<string>(newPassword));
+                }
+                catch (Exception ex)
+                {
+                    await ShowAlertAsync("Something went wrong!", ex.Message, "Ok");
+                    IsBusy = false;
+                    return;
+                }
+                finally
+                {
+                    await ShowToastAsync("Password changed successfully!");
+                    IsBusy = false;
+                }
+            }
         }
     }
 }
