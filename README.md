@@ -4,7 +4,9 @@ See how the App looks in PetAdoptionMobileApplication/Screenshots
 
 The data is fetched via API from a DB.
 
-The application is made in .NET MAUI with C# and XAML
+
+
+TECH STACK: .NET MAUI, MS SQL, Docker, Android Emulator.
 
 
 
