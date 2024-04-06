@@ -9,6 +9,7 @@ The application is made in .NET MAUI with C# and XAML
 
 
 NOTES:
+
 As of 23/03/2024, the dev tunnel still doesn't work, so I'm using localhost => Will have to use local images, because localhost doesn't serve images.
 
 From 25/03/2024 To 03/04/2024, a lot of major and minor issues fixed.
