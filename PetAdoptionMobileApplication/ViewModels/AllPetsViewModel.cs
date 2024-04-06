@@ -1,4 +1,4 @@
-﻿namespace PetAdoptionMobileApplication.ViewModels
+namespace PetAdoptionMobileApplication.ViewModels
 {
     public partial class AllPetsViewModel : BaseViewModel
     {
@@ -49,12 +49,12 @@
                 }
                 else
                 {
-                    await ShowAlertAsync("Error", APIResponse.Message, "Ok");
+                    await ShowAlertAsync("An error occured while executing this task!", APIResponse.Message, "Ok");
                 }
             }
             catch (Exception ex)
             {
-                await ShowAlertAsync("Error", ex.Message, "Ok");
+                await ShowAlertAsync("Something went wrong!", ex.Message, "Ok");
             }
             finally
             {
