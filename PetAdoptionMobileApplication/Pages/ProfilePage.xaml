@@ -124,9 +124,9 @@
                     </DataTrigger>
                 </Grid.Triggers>
                 
-                <!--<Grid.GestureRecognizers>
-                    <TapGestureRecognizer Command=""/>
-                </Grid.GestureRecognizers>-->
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangePassCommand}"/>
+                </Grid.GestureRecognizers>
             </Grid>
             
         </VerticalStackLayout>
