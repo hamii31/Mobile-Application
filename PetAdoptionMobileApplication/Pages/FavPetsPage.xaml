@@ -60,7 +60,7 @@
 
                             <VerticalStackLayout.GestureRecognizers>
                                 <TapGestureRecognizer 
-                                      Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:AllPetsViewModel}}, Path=GoToDetailsPageCommand}"
+                                      Command="{Binding Source={x:RelativeSource AncestorType={x:Type vm:UserFavouritesViewModel}}, Path=GoToDetailsPageCommand}"
                                       CommandParameter="{Binding Id}"/>
                             </VerticalStackLayout.GestureRecognizers>
                         </VerticalStackLayout>

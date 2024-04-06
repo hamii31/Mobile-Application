@@ -52,7 +52,10 @@ namespace PetAdoptionMobileApplication.ViewModels
                 }
                 else
                 {
-                    await ShowAlertAsync("An error occured while fetching your favourite pets!", APIResponse.Message, "Ok");
+
+                    await ShowAlertAsync("No Favourite Pets!", APIResponse.Message, "Ok");
+
+                    await GoToAsync($"//{nameof(HomePage)}");
                 }
             }
             catch (Exception ex)
