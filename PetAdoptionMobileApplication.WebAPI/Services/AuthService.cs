@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PetAdoptionMobileApplication.Common.DTOs;
 using PetAdoptionMobileApplication.WebAPI.Data;
 using PetAdoptionMobileApplication.WebAPI.Data.Entities;
@@ -17,7 +17,29 @@ namespace PetAdoptionMobileApplication.WebAPI.Services
 			this.tokenService = tokenService;
 		}
 
-		public async Task<APIResponse<AuthenticationResponseDTO>> LoginAsync(LoginRequestDTO LRDTO)
+        public async Task<APIResponse> ChangePasswordAsync(Guid userId, string password)
+        {
+			var user = await this.dbContext.Users
+				.AsTracking()
+				.FirstOrDefaultAsync(u => u.Id == userId);
+
+			if(user == null)
+			{
+                return APIResponse.Fail("User doesn't exist!");
+            }
+			
+			if(user.Pass == password)
+			{
+                return APIResponse.Fail("The new password cannot be the current password!");
+            }
+
+			user.Pass = password;
+			await this.dbContext.SaveChangesAsync();
+
+			return APIResponse.Success();
+        }
+
+        public async Task<APIResponse<AuthenticationResponseDTO>> LoginAsync(LoginRequestDTO LRDTO)
 		{
 			var user = await this.dbContext.Users.FirstOrDefaultAsync(u => u.Email == LRDTO.Email);
 
