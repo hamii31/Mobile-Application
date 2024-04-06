@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PetAdoptionMobileApplication.Common.DTOs;
 using PetAdoptionMobileApplication.WebAPI.Services.Interfaces;
@@ -13,11 +13,13 @@ namespace PetAdoptionMobileApplication.WebAPI.Controllers
 	{
 		private readonly IUserPetService userPetService;
         private readonly IPetService petService;
+        private readonly IAuthService authService;
 
-        public UserController(IUserPetService userPetService, IPetService petService)
+        public UserController(IUserPetService userPetService, IPetService petService, IAuthService authService)
         {
 			this.userPetService = userPetService;
             this.petService = petService;
+            this.authService = authService;
         }
 
         private Guid UserId => Guid.Parse(User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
@@ -41,5 +43,9 @@ namespace PetAdoptionMobileApplication.WebAPI.Controllers
         [HttpGet("pet-info/{petId}")] // api/user/pet-info/petId
         public async Task<APIResponse<PetInfoDTO>> GetPetInformationAsync(string petId)
             => await this.petService.GetPetInformationAsync(petId, UserId);
+
+		[HttpPost("change-password")]
+		public async Task<APIResponse> ChangePassword(SingleValueDTO<string> password)
+			=> await this.authService.ChangePasswordAsync(UserId, password.value);
     }
 }
