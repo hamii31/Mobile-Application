@@ -14,7 +14,7 @@ namespace PetAdoptionMobileApplication.ViewModels
         }
 
         [ObservableProperty]
-        private IEnumerable<PetListDTO> userFavs = Enumerable.Empty<PetListDTO>();
+        private IEnumerable<PetListDTO> userAdoptions = Enumerable.Empty<PetListDTO>();
 
         public async Task InitializeAsync()
         {
@@ -32,7 +32,7 @@ namespace PetAdoptionMobileApplication.ViewModels
                 var APIResponse = await this.userAPI.GetUserAdoptionsAsync();
                 if (APIResponse.IsSuccess)
                 {
-                    UserFavs = APIResponse.Data;
+                    UserAdoptions = APIResponse.Data;
                 }
                 else
                 {
