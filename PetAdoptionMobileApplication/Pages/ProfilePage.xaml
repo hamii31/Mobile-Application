@@ -67,6 +67,10 @@
                             TintColor="{StaticResource Primary}"
                             />
                     </Image.Behaviors>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding GoToAdoptionsPageCommand}"/>
+                    </Image.GestureRecognizers>
                 </Image>
                 <BoxView
                     Grid.Row="1"
