@@ -74,7 +74,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("25c1865e-3b63-474f-8ab4-ecf7c7e8108c"),
+                            Id = new Guid("014bdd2b-8285-4e18-a323-2fda881593ff"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2015, 9, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Dog - Alaskan Klee Kai",
@@ -88,7 +88,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7cc2b416-8aef-46ac-8d75-f51ce86ca2b7"),
+                            Id = new Guid("af3268a0-1384-445d-b90d-3619e2db09e1"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2007, 5, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Cat - Siamese",
@@ -102,7 +102,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4a9d468c-0e2a-4adb-8abe-af565af54587"),
+                            Id = new Guid("17ed8790-9f25-4331-b04b-628bfc437f06"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2020, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Dog - Belgian Malinois",
@@ -116,7 +116,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a34ec152-1816-40fb-a0c3-5954e4e875b3"),
+                            Id = new Guid("24d1dd1c-5779-4b13-aea9-5718b658c41a"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2017, 12, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Cat - Snowshoe",
@@ -130,7 +130,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9e0b663c-35e1-4628-b734-b0b35defd012"),
+                            Id = new Guid("6c6390cf-0aed-4e1f-8d9f-25794993b809"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2020, 7, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Bunny - House Bunny",
@@ -144,7 +144,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("031d2caa-c85d-47f8-a9b3-a2f3d4ee965b"),
+                            Id = new Guid("df848db3-048d-4b25-bbea-26a8458fa1f3"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2000, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Turtle - Pond Slider",
@@ -158,7 +158,7 @@ namespace PetAdoptionMobileApplication.WebAPI.Migrations
                         },
                         new
                         {
-                            Id = new Guid("605a2ad7-6934-4be1-aeef-ba91cbf9f914"),
+                            Id = new Guid("3b43b08c-7ccf-4221-8f07-3fe1086c9a00"),
                             AdoptionStatus = 1,
                             BirthDate = new DateTime(2018, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Breed = "Parrot - Amazon Parrot",
