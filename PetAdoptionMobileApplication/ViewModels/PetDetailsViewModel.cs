@@ -1,4 +1,4 @@
-﻿using PetAdoptionMobileApplication.Services;
+using PetAdoptionMobileApplication.Services;
 
 namespace PetAdoptionMobileApplication.ViewModels
 {
@@ -52,13 +52,13 @@ namespace PetAdoptionMobileApplication.ViewModels
                 }
                 else
                 {
-                    await ShowAlertAsync("Error", APIResponse.Message, "Ok");
+                    await ShowAlertAsync("An error occured while fetching pet info!", APIResponse.Message, "Ok");
                 }
 
             }
             catch (Exception ex)
             {
-                await ShowAlertAsync("An error occured while fetching pet info!", ex.Message, "Ok");
+                await ShowAlertAsync("Something went wrong!", ex.Message, "Ok");
             }
             finally 
             { 
@@ -75,7 +75,7 @@ namespace PetAdoptionMobileApplication.ViewModels
             // Check if user is not logged in
             if(!this.authService.IsLoggedIn)
             {
-                await ShowToastAsync("You need to have an account in order to do this!");
+                await ShowToastAsync("You need to be logged in!");
                 return;
             }
 
@@ -96,32 +96,32 @@ namespace PetAdoptionMobileApplication.ViewModels
                 // Toggle IsFav back to its previous value if there was an error
                 PetInfo.IsFav = !PetInfo.IsFav;
 
-                await ShowAlertAsync("There was an error while executing this task!", ex.Message, "Ok");
+                await ShowAlertAsync("Something went wrong!", ex.Message, "Ok");
             }
             finally
             {
                 IsBusy = false;
             }
         }
-        
+
         [RelayCommand]
         private async Task AdoptAsync()
         {
             // Uncomment to design the Adoption Successfull Page without adopting.
             //await GoToAsync(nameof(AdoptionSuccessfulPage));
             //return;
-        
+
             if (!this.authService.IsLoggedIn)
             {
                 await ShowToastAsync("You need to be logged in!");
                 return;
             }
-        
+
             IsBusy = true;
             try
             {
                 var APIResponse = await this.userAPI.AdoptPetAsync(PetId);
-        
+
                 if (APIResponse.IsSuccess)
                 {
                     PetInfo.AdoptionStatus = AdoptionStatus.Unavailable; // so the "Adopt" button changes immediately.
@@ -134,7 +134,7 @@ namespace PetAdoptionMobileApplication.ViewModels
             }
             catch (Exception ex)
             {
-                await ShowAlertAsync("An error occured while executing this task!", ex.Message, "OK");
+                await ShowAlertAsync("Something went wrong!", ex.Message, "OK");
                 IsBusy = false;
             }
             finally
@@ -142,6 +142,5 @@ namespace PetAdoptionMobileApplication.ViewModels
                 IsBusy = false;
             }
         }   
-        
     }
 }
