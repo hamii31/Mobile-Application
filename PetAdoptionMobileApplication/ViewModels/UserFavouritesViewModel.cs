@@ -1,4 +1,4 @@
-﻿using PetAdoptionMobileApplication.Services;
+using PetAdoptionMobileApplication.Services;
 using System.Collections.ObjectModel;
 
 namespace PetAdoptionMobileApplication.ViewModels
@@ -60,7 +60,7 @@ namespace PetAdoptionMobileApplication.ViewModels
             }
             catch (Exception ex)
             {
-                await ShowAlertAsync("An error occured while fetching your favourite pets!", ex.Message, "Ok");
+                await ShowAlertAsync("Something went wrong!", ex.Message, "Ok");
                 return;
             }
             finally
