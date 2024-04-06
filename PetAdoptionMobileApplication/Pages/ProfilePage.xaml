@@ -67,10 +67,6 @@
                             TintColor="{StaticResource Primary}"
                             />
                     </Image.Behaviors>
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer
-                            Command="{Binding GoToAdoptionsPageCommand}"/>
-                    </Image.GestureRecognizers>
                 </Image>
                 <BoxView
                     Grid.Row="1"
@@ -117,7 +113,17 @@
                     Opacity="0.25">
 
                 </BoxView>
-
+                
+                <!-- If the user is not logged in, just remove the change password button -->
+                <Grid.Triggers>
+                    <DataTrigger
+                         TargetType="Grid"
+                         Binding="{Binding IsLoggedIn}"
+                         Value="False">
+                        <Setter Property="IsVisible" Value="False"/>
+                    </DataTrigger>
+                </Grid.Triggers>
+                
                 <!--<Grid.GestureRecognizers>
                     <TapGestureRecognizer Command=""/>
                 </Grid.GestureRecognizers>-->
