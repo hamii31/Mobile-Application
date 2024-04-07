@@ -18,3 +18,5 @@ As of 23/03/2024, the dev tunnel still doesn't work, so I'm using localhost => W
 From 25/03/2024 To 03/04/2024, a lot of major and minor issues fixed.
 
 On 06/04/2024 managed to fix favourite pets not loading on the FavsPage, fixed the Java.Runtime issue and the bitmap being "too large" issue. Couldn't compete in the SoftUniada 2024 because of these issues...Next time I'll deliver an even better app!
+
+07/04/2024, might try to get images from the GitHub repository instead of locally, so the app gets lighter.
