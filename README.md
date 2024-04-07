@@ -7,7 +7,7 @@ The data is fetched via API from a DB.
 
 
 
-TECH STACK: .NET MAUI, MS SQL, Docker, Android Emulator.
+TECH STACK: .NET MAUI, ASP.NET Web API, MS SQL, Docker, Android Emulator.
 
 
 
