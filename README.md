@@ -13,8 +13,9 @@ TECH STACK: .NET MAUI, ASP.NET Web API, MS SQL, Docker, Android Emulator.
 
 NOTES:
 
-I started this project roughly around 25th February.
-Until 23rd of March 2024 I've implemented the Web API, JSON Web Token Factory, Http Client with Refit, All API Services and started working on the mobile app itself.
+I started this project roughly around 25th of February 2024.
+
+Since then I've implemented the Web API, JSON Web Token Factory, Http Client with Refit, All API Services and started working on the mobile app itself.
 
 As of 23/03/2024, the dev tunnel still doesn't work, so I'm using localhost => Will have to use local images, because localhost doesn't serve images.
 
