@@ -1,4 +1,4 @@
-This is a Full-Stack Mobile App - You can adopt pets; Will be shown pets ordered by age, by popularity, by gender and by breed; It contains a user JWT factory, custom Message Handler and Trust Provider. 
+This is a Full-Stack Mobile App - You can see pet listings, add pets to favourites and adopt pets. It contains a user JWT factory, custom Message Handler and Trust Provider. 
 
 See how the App looks in PetAdoptionMobileApplication/Screenshots
 (You'll have to download the raw video)
